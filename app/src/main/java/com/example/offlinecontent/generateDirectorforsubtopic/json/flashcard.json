@@ -1,0 +1,45 @@
+{
+  "bookmarkedDate": {
+    "type": "string",
+    "format": "date-time"
+  },
+  "difficultyLevel": {
+    "type": "string"
+  },
+  "flashcardId": {
+    "type": "integer",
+    "format": "int64"
+  },
+  "id": {
+    "type": "integer",
+    "format": "int64"
+  },
+  "isBookmarked": {
+    "type": "boolean"
+  },
+  "isCorrectAnswer": {
+    "type": "boolean"
+  },
+  "isSkipped": {
+    "type": "boolean"
+  },
+
+  "orderId": {
+    "type": "integer",
+    "format": "int32"
+  },
+
+  "question": {
+    "$ref": "#/definitions/QuestionCoreDataDto"
+  },
+  "questionId": {
+    "type": "string"
+  },
+  "timetakenInSecs": {
+    "type": "integer",
+    "format": "int64"
+  },
+  "userAnswers": {
+    "type": "string"
+  }
+}

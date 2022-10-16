@@ -1,0 +1,3661 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Infinitylearn",
+    "version": "v1.0",
+    "title": "INFINITY-LEARN"
+  },
+  "host": "selflearnapi.infinitylearn.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "app-versions-controller",
+      "description": "App Versions Controller"
+    },
+    {
+      "name": "configuration-controller",
+      "description": "Operations to access and update configuration"
+    },
+    {
+      "name": "events-controller",
+      "description": "Operations to get event information"
+    },
+    {
+      "name": "user-learn-flash-cards-controller",
+      "description": "Operations pertaining to selflearn Learn Flashcards module"
+    },
+    {
+      "name": "user-learn-user-story-controller",
+      "description": "Operations pertaining to selflearn userstory module"
+    },
+    {
+      "name": "user-learn-videos-controller",
+      "description": "Operations pertaining to selflearn Learn Videos module"
+    },
+    {
+      "name": "user-practice-questions-controller",
+      "description": "Operations pertaining to selflearn practice module"
+    },
+    {
+      "name": "user-selflearn-controller",
+      "description": "Operations pertaining to selflearn module"
+    }
+  ],
+  "paths": {
+    "/api/articulation/getUserStoriesAndDetailsforChapter": {
+      "get": {
+        "tags": [
+          "user-learn-user-story-controller"
+        ],
+        "summary": "get Articles/UserStories for Chapter",
+        "operationId": "getArticleDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/articulation/getUserStoriesforChapter": {
+      "get": {
+        "tags": [
+          "user-learn-user-story-controller"
+        ],
+        "summary": "get Articles/UserStories for Chapter",
+        "operationId": "getArticlesUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/articulation/getUserStoryDetails": {
+      "get": {
+        "tags": [
+          "user-learn-user-story-controller"
+        ],
+        "summary": "get userstory details",
+        "operationId": "getArticlesandDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "storyId",
+            "in": "query",
+            "description": "storyId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/articulation/updateStoryStatus": {
+      "post": {
+        "tags": [
+          "user-learn-user-story-controller"
+        ],
+        "summary": "get Articles/UserStories for Chapter",
+        "operationId": "getArticlesUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserStoryRequestDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/configuration/getConfiguration/{configKey}": {
+      "get": {
+        "tags": [
+          "configuration-controller"
+        ],
+        "summary": "returns the configuration info",
+        "operationId": "getConfigurationUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "configKey",
+            "in": "path",
+            "description": "configKey",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/configuration/getConfigurations": {
+      "get": {
+        "tags": [
+          "configuration-controller"
+        ],
+        "summary": "returns the configuration info",
+        "operationId": "getConfigurationsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/configuration/getVideoCompletePercentageforAnalytics": {
+      "get": {
+        "tags": [
+          "configuration-controller"
+        ],
+        "summary": "returns the configuration info",
+        "operationId": "getVideoCompletePercentageforAnalyticsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/configuration/updateConfigInfo": {
+      "post": {
+        "tags": [
+          "configuration-controller"
+        ],
+        "summary": "Update and add new configuration info for selflearn",
+        "operationId": "updateConfigInfoUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConfigurationDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/events/getObjectEventStatusforUser/{userId}/{eventType}": {
+      "get": {
+        "tags": [
+          "events-controller"
+        ],
+        "summary": "returns the event status",
+        "operationId": "getEventStatusforUserUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventType",
+            "in": "path",
+            "description": "eventType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/events/updateObjectEventStatusforUser": {
+      "post": {
+        "tags": [
+          "events-controller"
+        ],
+        "summary": "updates the event status for object",
+        "operationId": "updateObjectEventStatusUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnEventsDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/appversions": {
+      "get": {
+        "tags": [
+          "app-versions-controller"
+        ],
+        "summary": "returns app latest version and update requried or not for the selected deviceos and deviceCurrentVersion",
+        "operationId": "appLatestVersionUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "deviceCurrentVersion",
+            "in": "query",
+            "description": "deviceCurrentVersion",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deviceOs",
+            "in": "query",
+            "description": "deviceOs",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/flashcard": {
+      "post": {
+        "tags": [
+          "user-learn-flash-cards-controller"
+        ],
+        "summary": "submit Learn flashbacks",
+        "operationId": "submitUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnFlashcardSubmitDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/flashcard/errors": {
+      "post": {
+        "tags": [
+          "user-learn-flash-cards-controller"
+        ],
+        "summary": "report flashcard errors",
+        "operationId": "reportFlashcardErrorsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnFlashcardErrorsDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/flashcard/errors/questions": {
+      "post": {
+        "tags": [
+          "user-learn-flash-cards-controller"
+        ],
+        "summary": "report learn flashcards questions errors",
+        "operationId": "reportQuestionsErrorsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnFlashcardQuestionErrorsDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/flashcard/feedback": {
+      "post": {
+        "tags": [
+          "user-learn-flash-cards-controller"
+        ],
+        "summary": "rate learn flashcards feedback",
+        "operationId": "rateFlashcardUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestListDto",
+            "description": "requestListDto",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserLearnFlashcardFeedbackDto"
+              }
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/flashcard/feedback/flashcarddeck": {
+      "post": {
+        "tags": [
+          "user-learn-flash-cards-controller"
+        ],
+        "summary": "rate learn flashcard decks feedback",
+        "operationId": "rateFlashcarddeckUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnFlashcarddeckFeedbackDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/video": {
+      "post": {
+        "tags": [
+          "user-learn-videos-controller"
+        ],
+        "summary": "submit Learn video status",
+        "operationId": "submitUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnVideoSubmitDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/video/errors": {
+      "post": {
+        "tags": [
+          "user-learn-videos-controller"
+        ],
+        "summary": "report learn Video errors",
+        "operationId": "reportErrorsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnVideoErrorsDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/learn/video/feedback": {
+      "post": {
+        "tags": [
+          "user-learn-videos-controller"
+        ],
+        "summary": "rate learn video feedback",
+        "operationId": "rateVideosUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLearnVideoFeedbackDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/practice/errors": {
+      "post": {
+        "tags": [
+          "user-practice-questions-controller"
+        ],
+        "summary": "report practice exam errors",
+        "operationId": "reportErrorsUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPracticeQuestionErrorsDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/practice/feedback": {
+      "post": {
+        "tags": [
+          "user-practice-questions-controller"
+        ],
+        "summary": "rate practice questions feedback",
+        "operationId": "rateQuestionsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPracticeQuestionFeedbackDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/practice/submitAndGetPracticeQuestions": {
+      "post": {
+        "tags": [
+          "user-practice-questions-controller"
+        ],
+        "summary": "submit and get practice exam question",
+        "operationId": "submitAndGetPracticeQuestionsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPracticeQuestionSubmitRequestDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/bookmarkeditems": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all bookmarked items of the input user for exam and subject ids",
+        "operationId": "getBookmarkedItemsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "examid",
+            "in": "query",
+            "description": "examid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "subject",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "query",
+            "description": "userid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getUserChaptersForExamAndSubject": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all chapters for an input examid and subjectid",
+        "operationId": "getUserChaptersForExamAndSubjectUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getUserSubjectsPerExam": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all subjects for an input examid",
+        "operationId": "getUserSubjectsPerExamUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getUserTopicsForExamAndSubjectAndChapter": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all topics for an input examid,subjectid and chapterid",
+        "operationId": "getUserTopicsForExamAndSubjectAndChapterUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getuserflashcarddeck": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all subtopics related to flashcards of an input examId,subjectId,chapterId and topicId",
+        "operationId": "getUserFlashcarddecksForExamAndSubjectAndChapterAndTopicUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "topicId",
+            "in": "query",
+            "description": "topicId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getuserflashcardsAndQuestions": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return flashcards and question for an input examId,subjectId,chapterId, topicId and subtopicId",
+        "operationId": "getUserFlashcardsAndQuestionsForExamSubjectChapterTopicSubtopicUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subtopicId",
+            "in": "query",
+            "description": "subtopicId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "topicId",
+            "in": "query",
+            "description": "topicId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/getuservideos": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return all videos for an input examId,subjectId,chapterId and topicId",
+        "operationId": "getUserVideosForExamSubjectChapterTopicUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "topicId",
+            "in": "query",
+            "description": "topicId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/subtopicMinScoreLimit": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns the minimum score limit config info at the subtopic level",
+        "operationId": "getSubtopicMinScoreConfigUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/topicsAndSubtopics": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return list of topics and subtopics for an input userId, examId,subjectId,chapterId",
+        "operationId": "getUserTopicsAndSubtopicsForExamSubjectChapterUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/topicsAndVideos": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "return list of topics and videos for an input userId, examId,subjectId,chapterId",
+        "operationId": "getUserTopicsAndVideosForExamSubjectChapterUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "chapterId",
+            "in": "query",
+            "description": "chapterId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "examId",
+            "in": "query",
+            "description": "examId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "gradeId",
+            "in": "query",
+            "description": "gradeId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "subjectId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/updateChapterUnlockStatus": {
+      "post": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "submit chapter unlock Status",
+        "operationId": "updateChapterUnlockStatusUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "requestDto",
+            "description": "requestDto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserChapterLockStatusRequestDto"
+            }
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/userchapter/{usersubjectid}": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns progress of chapter level information of the user for a given user subject id",
+        "operationId": "getUserChapterDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "usersubjectid",
+            "in": "path",
+            "description": "usersubjectid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/userexam/{userid}": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns the progress of the exam level information for a given input userid",
+        "operationId": "getUserExamsDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "userid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/usersubject/{userexamid}": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns progress of subject level information of the user for a given user exam id",
+        "operationId": "getUserSubjectDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userexamid",
+            "in": "path",
+            "description": "userexamid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/usertopic/{userchapterid}": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns progress of topic level information of the user for a given user chapter id",
+        "operationId": "getUserTopicDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userchapterid",
+            "in": "path",
+            "description": "userchapterid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/selflearn/{userid}": {
+      "get": {
+        "tags": [
+          "user-selflearn-controller"
+        ],
+        "summary": "returns user detail with complete info about progress of all levels starting from exam",
+        "operationId": "getUserDetailsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Tenant",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subTenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "userid",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "ConfigurationDto": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "ConfigurationDto"
+    },
+    "JsonNode": {
+      "type": "object",
+      "title": "JsonNode"
+    },
+    "QuestionCoreDataDto": {
+      "type": "object",
+      "properties": {
+        "answer_options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "child_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "correct_answer": {
+          "$ref": "#/definitions/JsonNode"
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuestionSolutionHintObject"
+          }
+        },
+        "option_based_feedback": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "question_text": {
+          "type": "string"
+        },
+        "solution": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuestionSolutionHintObject"
+          }
+        }
+      },
+      "title": "QuestionCoreDataDto"
+    },
+    "QuestionSolutionHintObject": {
+      "type": "object",
+      "properties": {
+        "_visible": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "data": {
+          "type": "string"
+        }
+      },
+      "title": "QuestionSolutionHintObject"
+    },
+    "UserChapterLockStatusRequestDto": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isUnlocked": {
+          "type": "boolean"
+        },
+        "packageId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subjectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserChapterLockStatusRequestDto"
+    },
+    "UserLearnEventsDto": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventTriggerStatus": {
+          "type": "boolean"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "objectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subjectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subtopicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "topicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnEventsDto"
+    },
+    "UserLearnFlashcardDto": {
+      "type": "object",
+      "properties": {
+        "flashcardId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnFlashcardDto"
+    },
+    "UserLearnFlashcardErrorsDto": {
+      "type": "object",
+      "properties": {
+        "appModuleName": {
+          "type": "string"
+        },
+        "flashCardId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isImageUnclear": {
+          "type": "boolean"
+        },
+        "isIncorrectConcept": {
+          "type": "boolean"
+        },
+        "isUnabletoPlay": {
+          "type": "boolean"
+        },
+        "isUnclearAudio": {
+          "type": "boolean"
+        },
+        "isWrongSpelling": {
+          "type": "boolean"
+        },
+        "reportedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userMessage": {
+          "type": "string"
+        }
+      },
+      "title": "UserLearnFlashcardErrorsDto"
+    },
+    "UserLearnFlashcardFeedbackDto": {
+      "type": "object",
+      "properties": {
+        "flashCardId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rating": {
+          "type": "string"
+        },
+        "reportedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnFlashcardFeedbackDto"
+    },
+    "UserLearnFlashcardQuestionDto": {
+      "type": "object",
+      "properties": {
+        "bookmarkedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "difficultyLevel": {
+          "type": "string"
+        },
+        "flashcardId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isBookmarked": {
+          "type": "boolean"
+        },
+        "isCorrectAnswer": {
+          "type": "boolean"
+        },
+        "isSkipped": {
+          "type": "boolean"
+        },
+        "orderId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "question": {
+          "$ref": "#/definitions/QuestionCoreDataDto"
+        },
+        "questionId": {
+          "type": "string"
+        },
+        "timetakenInSecs": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userAnswers": {
+          "type": "string"
+        }
+      },
+      "title": "UserLearnFlashcardQuestionDto"
+    },
+    "UserLearnFlashcardQuestionErrorsDto": {
+      "type": "object",
+      "properties": {
+        "dataMissing": {
+          "type": "boolean"
+        },
+        "imageMissing": {
+          "type": "boolean"
+        },
+        "notSolvable": {
+          "type": "boolean"
+        },
+        "questionId": {
+          "type": "string"
+        },
+        "reportDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userMessage": {
+          "type": "string"
+        },
+        "wrongSpelling": {
+          "type": "boolean"
+        }
+      },
+      "title": "UserLearnFlashcardQuestionErrorsDto"
+    },
+    "UserLearnFlashcardSubmitDto": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "chapterName": {
+          "type": "string"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "flashcarddeckId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "flashcardquestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserLearnFlashcardQuestionDto"
+          }
+        },
+        "flashcards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserLearnFlashcardDto"
+          }
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isBookmarked": {
+          "type": "boolean"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "isdCode": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "subTopicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subjectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "topicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnFlashcardSubmitDto"
+    },
+    "UserLearnFlashcarddeckFeedbackDto": {
+      "type": "object",
+      "properties": {
+        "additionalComments": {
+          "type": "string"
+        },
+        "level1Rating": {
+          "type": "string"
+        },
+        "level2Rating": {
+          "type": "string"
+        },
+        "subtopicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnFlashcarddeckFeedbackDto"
+    },
+    "UserLearnVideoErrorsDto": {
+      "type": "object",
+      "properties": {
+        "appModuleName": {
+          "type": "string"
+        },
+        "isIncorrectConcept": {
+          "type": "boolean"
+        },
+        "isUnabletoPlay": {
+          "type": "boolean"
+        },
+        "isUnclearAudio": {
+          "type": "boolean"
+        },
+        "reportedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userMessage": {
+          "type": "string"
+        },
+        "videoId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnVideoErrorsDto"
+    },
+    "UserLearnVideoFeedbackDto": {
+      "type": "object",
+      "properties": {
+        "additionalComments": {
+          "type": "string"
+        },
+        "level1Rating": {
+          "type": "string"
+        },
+        "level2Rating": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "videoId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnVideoFeedbackDto"
+    },
+    "UserLearnVideoSubmitDto": {
+      "type": "object",
+      "properties": {
+        "bookmarkedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chapterId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "completeddate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isBookmarked": {
+          "type": "boolean"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "isdCode": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "subjectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subtopicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "thumbnail": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "topicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "videoId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "videoURL": {
+          "type": "string"
+        },
+        "watchedContentInSecs": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserLearnVideoSubmitDto"
+    },
+    "UserPracticeQuestionErrorsDto": {
+      "type": "object",
+      "properties": {
+        "appModuleName": {
+          "type": "string"
+        },
+        "dataMissing": {
+          "type": "boolean"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "imageMissing": {
+          "type": "boolean"
+        },
+        "notSolvable": {
+          "type": "boolean"
+        },
+        "questionId": {
+          "type": "string"
+        },
+        "reportDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userMessage": {
+          "type": "string"
+        },
+        "wrongSpelling": {
+          "type": "boolean"
+        }
+      },
+      "title": "UserPracticeQuestionErrorsDto"
+    },
+    "UserPracticeQuestionFeedbackDto": {
+      "type": "object",
+      "properties": {
+        "additionalComments": {
+          "type": "string"
+        },
+        "level1Rating": {
+          "type": "string"
+        },
+        "level2Rating": {
+          "type": "string"
+        },
+        "topicId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserPracticeQuestionFeedbackDto"
+    },
+    "UserPracticeQuestionSubmitRequestDto": {
+      "type": "object",
+      "properties": {
+        "bookmarkeddate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chapterid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "difficultyLevel": {
+          "type": "string"
+        },
+        "examName": {
+          "type": "string"
+        },
+        "examid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isCorrectAnswer": {
+          "type": "boolean"
+        },
+        "isbookmarked": {
+          "type": "boolean"
+        },
+        "isdCode": {
+          "type": "string"
+        },
+        "isskipped": {
+          "type": "boolean"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "questionid": {
+          "type": "string"
+        },
+        "subjectid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subtopicid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "timetakeninsecs": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "topicid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userAnswers": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserPracticeQuestionSubmitRequestDto"
+    },
+    "UserStoryRequestDto": {
+      "type": "object",
+      "properties": {
+        "chapterId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "examId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gradeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isdCode": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "storyAttempted": {
+          "type": "boolean"
+        },
+        "storyId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "subjectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserStoryRequestDto"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "user": {
+    "userId": 2226481,
+    "grade": {
+      "gradeId": 3,
+      "exam": {
+        "examId": 2,
+        "subjects": [
+          {
+            "subjectId": 1,
+            "chapters": [
+              {
+                "chapterId": 99,
+                "videoURL": [
+                  "1643295762992.mp4",
+                  "1643295764120.mp4"
+                ]
+              },
+              {
+                "chapterId": 100,
+                "videoURL": [
+                  "1643295826252.mp4",
+                  "1643295827463.mp4"
+                ]
+              }
+            ]
+          },
+          {
+            "subjectId": 2,
+            "chapters": [
+              {
+                "chapterId": 64,
+                "videoURL": [
+                  "1643295014960.mp4",
+                  "1643294976860.mp4"
+                ]
+              },
+              {
+                "chapterID": 68,
+                "videoURL": [
+                  "1643294638749.mp4",
+                  "1643294639398.mp4"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
