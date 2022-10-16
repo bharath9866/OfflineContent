@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 fun main(){
     try {

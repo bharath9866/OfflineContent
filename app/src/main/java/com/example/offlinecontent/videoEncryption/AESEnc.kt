@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.videoEncryption
+package com.example.offlinecontent.videoEncryption
 
 import android.os.Build
 import androidx.annotation.RequiresApi

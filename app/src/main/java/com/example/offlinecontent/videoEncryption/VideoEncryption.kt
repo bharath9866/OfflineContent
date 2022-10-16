@@ -1,8 +1,8 @@
-package com.example.jetpackdemo.videoEncryption
+package com.example.offlinecontent.videoEncryption
 
-import com.example.jetpackdemo.videoEncryption.AESEnc.encryptFile
-import com.example.jetpackdemo.videoEncryption.AESEnc.generateIv
-import com.example.jetpackdemo.videoEncryption.AESEnc.generateKey
+import com.example.offlinecontent.videoEncryption.AESEnc.encryptFile
+import com.example.offlinecontent.videoEncryption.AESEnc.generateIv
+import com.example.offlinecontent.videoEncryption.AESEnc.generateKey
 import java.io.File
 
 

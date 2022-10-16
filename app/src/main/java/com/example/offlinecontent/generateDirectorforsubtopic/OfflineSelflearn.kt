@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -8,7 +8,7 @@ import com.example.jetpackdemo.generateDirectorforsubtopic.modal.getuserflashcar
 import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandsubtopics.Data
 import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandsubtopics.TopicsAndSubtopics
 import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
-import com.example.jetpackdemo.videoEncryption.videoEncryption
+import com.example.offlinecontent.videoEncryption.videoEncryption
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException

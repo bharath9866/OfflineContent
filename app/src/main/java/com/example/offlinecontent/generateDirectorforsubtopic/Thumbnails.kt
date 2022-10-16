@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
 import com.google.gson.Gson

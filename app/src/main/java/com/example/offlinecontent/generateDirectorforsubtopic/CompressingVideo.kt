@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 //import io.github.techgnious.IVCompressor
 //import io.github.techgnious.dto.ResizeResolution

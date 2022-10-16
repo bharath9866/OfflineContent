@@ -1,7 +1,8 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.jetpackdemo.generateDirectorforsubtopic.fileCopy
 import java.io.IOException
 
 /**

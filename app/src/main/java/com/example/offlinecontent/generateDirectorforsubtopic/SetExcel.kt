@@ -22,7 +22,7 @@ fun writeToExcelFile(filepath: String) {
 
     //Write text value to cell located at ROW_NUMBER / COLUMN_NUMBER:
     for(i in 0 until 10){
-        xlWs.createRow(i).createCell(columnNumber).setCellValue("TESTING")
+        xlWs.createRow(i).createCell(columnNumber).setCellValue("TESTINGTESTING")
     }
 
     //Write file:

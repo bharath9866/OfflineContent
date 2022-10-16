@@ -3,6 +3,9 @@ package com.example.jetpackdemo.generateDirectorforsubtopic
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.jetpackdemo.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
+import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
+import com.example.offlinecontent.generateDirectorforsubtopic.createDirectory
+import com.example.offlinecontent.generateDirectorforsubtopic.mbToGb
 import com.google.gson.Gson
 import java.io.File
 import java.io.InputStream
