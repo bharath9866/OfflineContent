@@ -1,5 +1,6 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandsubtopics
+package com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics
 
+import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.Data
 import com.google.gson.annotations.SerializedName
 
 data class TopicsAndSubtopics(

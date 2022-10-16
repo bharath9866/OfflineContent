@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandsubtopics
+package com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics
 
 import com.google.gson.annotations.SerializedName
 

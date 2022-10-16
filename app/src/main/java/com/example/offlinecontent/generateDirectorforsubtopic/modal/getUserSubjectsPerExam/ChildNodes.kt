@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic.modal.getUserSubjectsPerExam
+package com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam
 
 import com.google.gson.annotations.SerializedName
 

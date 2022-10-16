@@ -1,4 +1,4 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic.modal.getuserflashcardsandquestions
+package com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserflashcardsandquestions
 
 import com.google.gson.annotations.SerializedName
 

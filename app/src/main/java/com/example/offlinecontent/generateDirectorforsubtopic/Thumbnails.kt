@@ -1,6 +1,6 @@
 package com.example.offlinecontent.generateDirectorforsubtopic
 
-import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
+import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
 import com.google.gson.Gson
 import java.io.File
 import java.io.InputStream

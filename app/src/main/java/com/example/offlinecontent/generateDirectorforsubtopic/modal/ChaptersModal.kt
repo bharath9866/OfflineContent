@@ -1,6 +1,6 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic.modal
+package com.example.offlinecontent.generateDirectorforsubtopic.modal
 
-import com.example.jetpackdemo.generateDirectorforsubtopic.modal.topicsandvideos.Chapter
+import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.Chapter
 
 data class ChaptersModal(
     var chapters: ArrayList<Chapter> = arrayListOf()
