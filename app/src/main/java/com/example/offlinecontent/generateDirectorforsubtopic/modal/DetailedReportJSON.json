@@ -1,0 +1,764 @@
+{
+  "status": true,
+  "message": "success",
+  "data": [
+    {
+      "paper": "Paper1",
+      "scheduleId": 615,
+      "schedulewiseReport": {
+        "allSubjects": {
+          "dashboard": {
+            "totalTimeTaken": 159000,
+            "avgTimeTaken": 5129,
+            "avgTimePerCorrectQuestion": 1666,
+            "avgTimePerInCorrectQuestion": 4833,
+            "accuracy": 9,
+            "score": -12,
+            "totalMarks": 132,
+            "correct": 3,
+            "partialCorrect": 0,
+            "wrong": 24,
+            "unattempted": 4
+          },
+          "score": {
+            "topScore": 132,
+            "lowestScore": -19,
+            "score": -12,
+            "avgScore": 40.599998474121094
+          },
+          "ranks": {
+            "airRank": 35,
+            "stateRank": 35,
+            "cityRank": 35,
+            "branchRank": 16,
+            "orientationRank": 35,
+            "sectionRank": 27,
+            "batchRank": null
+          },
+          "subjectWiseReport": [
+            {
+              "subjectId": 1963,
+              "subjectName": "Chemistry",
+              "isPartialMarkingEnabled": false,
+              "remarks": null,
+              "attempted": 9,
+              "accuracy": 0,
+              "avgTimePerQuestion": 2700,
+              "avgTimePerCorrectQuestion": 0,
+              "avgTimePerInCorrectQuestion": 2222,
+              "qcount": 11
+            },
+            {
+              "subjectId": 1964,
+              "subjectName": "Mathematics",
+              "isPartialMarkingEnabled": false,
+              "remarks": null,
+              "attempted": 9,
+              "accuracy": 20,
+              "avgTimePerQuestion": 4600,
+              "avgTimePerCorrectQuestion": 2000,
+              "avgTimePerInCorrectQuestion": 2142,
+              "qcount": 11
+            },
+            {
+              "subjectId": 1962,
+              "subjectName": "Physics",
+              "isPartialMarkingEnabled": false,
+              "remarks": null,
+              "attempted": 9,
+              "accuracy": 9,
+              "avgTimePerQuestion": 7818,
+              "avgTimePerCorrectQuestion": 1000,
+              "avgTimePerInCorrectQuestion": 10125,
+              "qcount": 11
+            }
+          ],
+          "questionTypeReport": [
+            {
+              "questionTypeId": "ec2f3aec-e64c-11ec-8fea-0242ac120002",
+              "questionType": "Numerical value question",
+              "attempted": 0,
+              "accuracy": 0,
+              "correct": null,
+              "wrong": null,
+              "unAttempted": null,
+              "timeSpent": null,
+              "negativeMarks": null,
+              "marksAchieved": null,
+              "totalMarks": null,
+              "avgTimePerQuestion": 9500,
+              "qcount": 6
+            },
+            {
+              "questionTypeId": "ffc0b3e6-f1c4-45df-a302-918fda45e122",
+              "questionType": "Multiple correct mcq",
+              "attempted": 15,
+              "accuracy": 6,
+              "correct": null,
+              "wrong": null,
+              "unAttempted": null,
+              "timeSpent": null,
+              "negativeMarks": null,
+              "marksAchieved": null,
+              "totalMarks": null,
+              "avgTimePerQuestion": 2133,
+              "qcount": 15
+            },
+            {
+              "questionTypeId": "20fbaaec-85fa-42be-8d10-7d442e982301",
+              "questionType": "Single correct mcq",
+              "attempted": 12,
+              "accuracy": 16,
+              "correct": null,
+              "wrong": null,
+              "unAttempted": null,
+              "timeSpent": null,
+              "negativeMarks": null,
+              "marksAchieved": null,
+              "totalMarks": null,
+              "avgTimePerQuestion": 7416,
+              "qcount": 12
+            }
+          ]
+        },
+        "subjectWise": [
+          {
+            "subjectId": 1963,
+            "subjectName": "Chemistry",
+            "isPartialMarkingEnabled": false,
+            "negativeMarks": null,
+            "remarks": null,
+            "dashboard": {
+              "totalTimeTaken": 27000,
+              "avgTimeTaken": 2700,
+              "avgTimePerCorrectQuestion": 0,
+              "avgTimePerInCorrectQuestion": 2222,
+              "accuracy": 0,
+              "score": -9,
+              "totalMarks": 44,
+              "correct": 0,
+              "partialCorrect": 0,
+              "wrong": 9,
+              "unattempted": 1
+            },
+            "score": {
+              "topScore": 44,
+              "lowestScore": -11,
+              "score": -9,
+              "avgScore": 12.699999809265137
+            },
+            "ranks": {
+              "airRank": 21,
+              "stateRank": 21,
+              "cityRank": 21,
+              "branchRank": 13,
+              "orientationRank": 21,
+              "sectionRank": 16,
+              "batchRank": null
+            },
+            "chapterWiseReports": [
+              {
+                "chapterId": null,
+                "chapterName": "Alcohols, Phenols and Ethers",
+                "remarks": null,
+                "attempted": 9,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "accuracy": 0,
+                "avgTimePerQuestion": 2700,
+                "qcount": 11
+              }
+            ],
+            "questionTypeReport": [
+              {
+                "questionTypeId": "ec2f3aec-e64c-11ec-8fea-0242ac120002",
+                "questionType": "Numerical value question",
+                "attempted": 0,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 7000,
+                "qcount": 2
+              },
+              {
+                "questionTypeId": "ffc0b3e6-f1c4-45df-a302-918fda45e122",
+                "questionType": "Multiple correct mcq",
+                "attempted": 5,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2000,
+                "qcount": 5
+              },
+              {
+                "questionTypeId": "20fbaaec-85fa-42be-8d10-7d442e982301",
+                "questionType": "Single correct mcq",
+                "attempted": 4,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2500,
+                "qcount": 4
+              }
+            ],
+            "qcount": 11
+          },
+          {
+            "subjectId": 1964,
+            "subjectName": "Mathematics",
+            "isPartialMarkingEnabled": false,
+            "negativeMarks": null,
+            "remarks": null,
+            "dashboard": {
+              "totalTimeTaken": 46000,
+              "avgTimeTaken": 4600,
+              "avgTimePerCorrectQuestion": 2000,
+              "avgTimePerInCorrectQuestion": 2142,
+              "accuracy": 20,
+              "score": 1,
+              "totalMarks": 44,
+              "correct": 2,
+              "partialCorrect": 0,
+              "wrong": 7,
+              "unattempted": 1
+            },
+            "score": {
+              "topScore": 44,
+              "lowestScore": -11,
+              "score": 1,
+              "avgScore": 12.0
+            },
+            "ranks": {
+              "airRank": 13,
+              "stateRank": 13,
+              "cityRank": 13,
+              "branchRank": 7,
+              "orientationRank": 13,
+              "sectionRank": 12,
+              "batchRank": null
+            },
+            "chapterWiseReports": [
+              {
+                "chapterId": null,
+                "chapterName": "Applications of Derivatives",
+                "remarks": null,
+                "attempted": 9,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "accuracy": 20,
+                "avgTimePerQuestion": 4600,
+                "qcount": 11
+              }
+            ],
+            "questionTypeReport": [
+              {
+                "questionTypeId": "ec2f3aec-e64c-11ec-8fea-0242ac120002",
+                "questionType": "Numerical value question",
+                "attempted": 0,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 27000,
+                "qcount": 2
+              },
+              {
+                "questionTypeId": "ffc0b3e6-f1c4-45df-a302-918fda45e122",
+                "questionType": "Multiple correct mcq",
+                "attempted": 5,
+                "accuracy": 20,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2200,
+                "qcount": 5
+              },
+              {
+                "questionTypeId": "20fbaaec-85fa-42be-8d10-7d442e982301",
+                "questionType": "Single correct mcq",
+                "attempted": 4,
+                "accuracy": 25,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2000,
+                "qcount": 4
+              }
+            ],
+            "qcount": 11
+          },
+          {
+            "subjectId": 1962,
+            "subjectName": "Physics",
+            "isPartialMarkingEnabled": false,
+            "negativeMarks": null,
+            "remarks": null,
+            "dashboard": {
+              "totalTimeTaken": 86000,
+              "avgTimeTaken": 7818,
+              "avgTimePerCorrectQuestion": 1000,
+              "avgTimePerInCorrectQuestion": 10125,
+              "accuracy": 9,
+              "score": -4,
+              "totalMarks": 44,
+              "correct": 1,
+              "partialCorrect": 0,
+              "wrong": 8,
+              "unattempted": 2
+            },
+            "score": {
+              "topScore": 44,
+              "lowestScore": -6,
+              "score": -4,
+              "avgScore": 15.800000190734863
+            },
+            "ranks": {
+              "airRank": 24,
+              "stateRank": 24,
+              "cityRank": 24,
+              "branchRank": 14,
+              "orientationRank": 24,
+              "sectionRank": 18,
+              "batchRank": null
+            },
+            "chapterWiseReports": [
+              {
+                "chapterId": null,
+                "chapterName": "Alternating Current",
+                "remarks": null,
+                "attempted": 9,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "accuracy": 9,
+                "avgTimePerQuestion": 7818,
+                "qcount": 11
+              }
+            ],
+            "questionTypeReport": [
+              {
+                "questionTypeId": "ec2f3aec-e64c-11ec-8fea-0242ac120002",
+                "questionType": "Numerical value question",
+                "attempted": 0,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2000,
+                "qcount": 2
+              },
+              {
+                "questionTypeId": "ffc0b3e6-f1c4-45df-a302-918fda45e122",
+                "questionType": "Multiple correct mcq",
+                "attempted": 5,
+                "accuracy": 0,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 2200,
+                "qcount": 5
+              },
+              {
+                "questionTypeId": "20fbaaec-85fa-42be-8d10-7d442e982301",
+                "questionType": "Single correct mcq",
+                "attempted": 4,
+                "accuracy": 25,
+                "correct": null,
+                "wrong": null,
+                "unAttempted": null,
+                "timeSpent": null,
+                "negativeMarks": null,
+                "marksAchieved": null,
+                "totalMarks": null,
+                "avgTimePerQuestion": 17750,
+                "qcount": 4
+              }
+            ],
+            "qcount": 11
+          }
+        ],
+        "questionwiseTimeAnalysisReport": [
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 67000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 1,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": 4.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 2,
+            "ATTEMPT_STATUS": "Correct"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 3,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 4,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 5,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 6,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 7,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 8,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 9,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 10,
+            "ATTEMPT_STATUS": "Unattempted"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Physics",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 11,
+            "ATTEMPT_STATUS": "Unattempted"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 12,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 13,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 14,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 4000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 15,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 16,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 17,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 18,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 19,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 20,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 7000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 21,
+            "ATTEMPT_STATUS": "Unattempted"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Chemistry",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 0,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 22,
+            "ATTEMPT_STATUS": "Unattempted"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": 4.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 23,
+            "ATTEMPT_STATUS": "Correct"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 24,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 25,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 26,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 27,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 3000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 28,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 29,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": -1.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 2000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 30,
+            "ATTEMPT_STATUS": "Incorrect"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": 4.0,
+            "TEST_ID": 630,
+            "SPENT_TIME": 1000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 31,
+            "ATTEMPT_STATUS": "Correct"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 27000,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 32,
+            "ATTEMPT_STATUS": "Unattempted"
+          },
+          {
+            "SCHEDULE_ID": 615,
+            "SUBJECT_NAME": "Mathematics",
+            "ACHIEVED_MARKS": null,
+            "TEST_ID": 630,
+            "SPENT_TIME": 0,
+            "TOTAL_MARKS": 4.0,
+            "Que_SNO": 33,
+            "ATTEMPT_STATUS": "Unattempted"
+          }
+        ]
+      }
+    }
+  ]
+}

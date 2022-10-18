@@ -1,8 +1,7 @@
 package com.example.offlinecontent
 
 import android.util.Log
-import apps.infinitylearn.lms.studentReport.detailedReport.domain.modal.detailedAnalysis.DetailedAnalysisReportResponse
-import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.VideoJSON
+import com.example.offlinecontent.generateDirectorforsubtopic.modal.detailedAnalysis.DetailedAnalysisReportResponse
 import com.google.gson.Gson
 import java.io.File
 import java.io.InputStream
