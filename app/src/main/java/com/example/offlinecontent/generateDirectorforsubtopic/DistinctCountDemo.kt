@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.jetpackdemo.generateDirectorforsubtopic.fileCopy
 import com.example.jetpackdemo.generateDirectorforsubtopic.isFileExists
+import com.example.offlinecontent.offlineContent.createDirectory
 import java.io.File
 import java.nio.file.Paths
 

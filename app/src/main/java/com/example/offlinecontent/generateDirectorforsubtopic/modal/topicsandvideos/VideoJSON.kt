@@ -1,5 +1,9 @@
 package com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos
 
+import dagger.Provides
+import javax.inject.Singleton
+
+@Singleton
 data class VideoJSON(
     var user: User? = User()
 )
@@ -71,4 +75,3 @@ var temp = VideoJSON(
         )
     )
 )
-

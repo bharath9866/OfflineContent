@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
 import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
-import com.example.offlinecontent.generateDirectorforsubtopic.createDirectory
+import com.example.offlinecontent.offlineContent.createDirectory
 import com.example.offlinecontent.generateDirectorforsubtopic.mbToGb
 import com.google.gson.Gson
 import java.io.File

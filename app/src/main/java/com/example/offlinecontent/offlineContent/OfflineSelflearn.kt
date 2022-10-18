@@ -1,4 +1,4 @@
-package com.example.offlinecontent.generateDirectorforsubtopic
+package com.example.offlinecontent.offlineContent
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -8,7 +8,6 @@ import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserflash
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.Data
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.TopicsAndSubtopics
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
-import com.example.offlinecontent.videoEncryption.videoEncryption
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException

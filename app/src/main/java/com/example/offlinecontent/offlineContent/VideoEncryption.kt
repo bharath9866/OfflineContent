@@ -1,8 +1,8 @@
-package com.example.offlinecontent.videoEncryption
+package com.example.offlinecontent.offlineContent
 
-import com.example.offlinecontent.videoEncryption.AESEnc.encryptFile
-import com.example.offlinecontent.videoEncryption.AESEnc.generateIv
-import com.example.offlinecontent.videoEncryption.AESEnc.generateKey
+import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
+import com.example.offlinecontent.offlineContent.AESEnc.generateIv
+import com.example.offlinecontent.offlineContent.AESEnc.generateKey
 import java.io.File
 
 

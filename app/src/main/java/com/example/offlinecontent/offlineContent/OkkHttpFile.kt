@@ -1,4 +1,4 @@
-package com.example.offlinecontent.generateDirectorforsubtopic
+package com.example.offlinecontent.offlineContent
 
 
 import android.os.Build
