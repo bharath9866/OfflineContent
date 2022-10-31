@@ -31,7 +31,7 @@ fun main(){
 
 //    getImages("E", 3205748, 13, 7)
 
-    getVideos("D", 3585462, 3, 3, usage = "getSizeOfTheContent")
+    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
 
 //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
 

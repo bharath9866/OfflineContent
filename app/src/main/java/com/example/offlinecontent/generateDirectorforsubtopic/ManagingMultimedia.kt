@@ -16,7 +16,7 @@ fun main(){
     //getSubjectImages("D", 136683, 7, 1)
     //images("D", 136683, 2, 2)
     //images("D", 136683, 7, 1)
-    getVideos("D", 3486982, 2, 3)
+    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
 }
 
 
@@ -129,7 +129,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
                                                             else if (usage.contains("getSizeOfTheContent")) {
 
                                                                 sizeOfTheContent += bytesToMb(Paths.get(src).fileSize())
-
+                                                                listNos.add(ele)
                                                             }
                                                         } else {
                                                             File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").appendText(ele + "\n")
@@ -155,16 +155,16 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
         }
     }
 
+    println("Total No.Of Videos in a List: " + listNos.distinct().count())
 
     // Printing Non-MP4 Files in a Text File
-    listNos.distinct().forEach { element ->
+    /*listNos.distinct().forEach { element ->
         if (!element.contains(".mp4", true)) {
             //File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").writeText("")
             File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").appendText(element + "\n")
         }
-    }
+    }*/
 
-    println("Total No.Of Videos in a List: " + listNos.distinct().count())
     print("dir: ${dir}, userId: ${userId}, gradeId: ${gradeId}, examdId: $examId -- ")
     println("Size of the Content: " + mbToGb(sizeOfTheContent))
 
@@ -175,7 +175,6 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
         createDirectory(Paths.get(videosPath))
     }*/
 
-//    videoEncryption(sourcePath = "${examPath}\\decryptedVideos", destinationPath = "${videosPath}\\")
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
