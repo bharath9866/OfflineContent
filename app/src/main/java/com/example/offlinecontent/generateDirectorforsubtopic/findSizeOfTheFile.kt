@@ -5,15 +5,19 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.io.File
 import java.nio.file.Paths
+import java.util.function.DoubleToLongFunction
 import kotlin.io.path.fileSize
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
 
-    val file = File("D:\\3486982")
-    println(bytesToKb(Paths.get("D:\\3486982\\2\\3\\getUserSubjectsPerExam.json").fileSize()))
+//    val file = File("D:\\3486982")
+//    println(bytesToKb(Paths.get("D:\\3486982\\2\\3\\getUserSubjectsPerExam.json").fileSize()))
 //    println(kbToGb(bytesToKb(folderSize(file))))
+
+    val src = "C:\\Users\\Lenovo\\Downloads\\BackUp\\IMPORTANT\\1654754761396.mp4"
+    println(bytesToMb(Paths.get(src).fileSize()))
 
 //    try {
 //        val size = file.length()
@@ -44,9 +48,9 @@ fun bytesToKb(bytes:Long): Long {
     return size_kb
 }
 
-fun bytesToMb(bytes:Long):Long{
-    val size_kb = bytes/1024
-    val size_mb = size_kb/1024
+fun bytesToMb(bytes:Long):Double{
+    val size_kb = bytes/1024.0
+    val size_mb = size_kb/1024.0
     return size_mb
 }
 
@@ -57,8 +61,8 @@ fun kbToGb(kb:Long): Long {
     return size_gb
 }
 
-fun mbToGb(mb:Long):Long{
-    return mb/1024
+fun mbToGb(mb:Double):Long{
+    return (mb/1024.0).toLong()
 }
 fun bytesToGb(bytes: Long): Long {
     val size_kb = bytes / 1024

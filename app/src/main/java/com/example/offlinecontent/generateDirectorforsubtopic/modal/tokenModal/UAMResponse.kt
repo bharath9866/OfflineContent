@@ -2,7 +2,7 @@ package com.example.offlinecontent.generateDirectorforsubtopic.modal.tokenModal
 
 import com.google.gson.annotations.SerializedName
 
-data class AuthenticationModel(
+data class UAMResponse(
     @SerializedName("accessToken") var accessToken: String? = null,
     @SerializedName("isWalkthrough") var isWalkthrough: Boolean? = null,
     @SerializedName("isdCode") var isdCode: String? = null,
@@ -35,7 +35,7 @@ data class Campus(
     @SerializedName("image") var image: String? = null,
     @SerializedName("pincode") var pincode: String? = null,
     @SerializedName("state") var state: String? = null,
-    @SerializedName("tenant_id") var tenantId: String? = null,
+    @SerializedName("tenant_id") var tenantId: Int? = null,
 )
 
 

@@ -1,11 +1,9 @@
-package com.example.jetpackdemo.generateDirectorforsubtopic
+package com.example.offlinecontent.generateDirectorforsubtopic
 
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
-import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
 import com.example.offlinecontent.offlineContent.createDirectory
-import com.example.offlinecontent.generateDirectorforsubtopic.mbToGb
 import com.google.gson.Gson
 import java.io.File
 import java.io.InputStream
@@ -28,7 +26,7 @@ fun main(){
  * 2. getSizeOfTheContent: which is used to get the size of all videos without downloading content
  */
 @RequiresApi(Build.VERSION_CODES.O)
-fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = "getSizeOfTheContent") {
+fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = "download") {
 
     val listNos : ArrayList<String> = arrayListOf()
 
@@ -39,7 +37,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
     val subjects = path.listFiles()
     var duplicateFile = 0
 
-    var sizeOfTheContent:Long = 0L
+    var sizeOfTheContent = 0.0
 
     if(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").exists()){
         File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").delete()

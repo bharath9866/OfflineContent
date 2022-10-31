@@ -2,6 +2,7 @@ package com.example.offlinecontent.offlineContent
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.offlinecontent.generateDirectorforsubtopic.getVideos
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserchaptersforexamandsubject.GetUserChaptersForExamAndSubject
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserflashcardsandquestions.GetUserFlashCardsAndQuestions
@@ -21,12 +22,18 @@ import java.nio.file.Paths
 fun main(){
 
 
+//    uamRequest("DUMMY0301")?.apply {
+//        offLineSelfLearn(drive = "E", userId = userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0, token = accessToken?:"", tenantName = tenantName, tenantId = userDto?.campus?.get(0)?.tenantId?:0, subTenantId = userDto?.subTenant?:0)
+//    }
+//
 //    val token = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0Njk5MDIiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDU3NDgiLCJGaXJzdE5hbWUiOiJTQVRZQSBMT0hJVEgiLCJUZW5hbnRDb2RlIjoic3JpY2hhaXRhbnlhIiwiTGFzdE5hbWUiOiJWRURVUlVQQVJUSEkiLCJleHAiOjE2NjQ3MjEyNTgsIlJvbGVJZCI6IjEiLCJpYXQiOjE2NjQ2MzQ4NTh9.--m9tZ0M9IrV-25kulM7TjbH-4kjHmN7Fsp1n0qqtJw"
 //    offLineSelfLearn("E", 3205748, 13, 7, token = token, tenantName = "srichaitanya", tenantId = 2, subTenantId = 358)
 
 //    getImages("E", 3205748, 13, 7)
-//    getVideos("D", 3486982, 2, 3)
-    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
+
+    getVideos("D", 3585462, 3, 3, usage = "getSizeOfTheContent")
+
+//    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
 
 //    val token = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0Njk5MDIiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDU3NDgiLCJGaXJzdE5hbWUiOiJTQVRZQSBMT0hJVEgiLCJUZW5hbnRDb2RlIjoic3JpY2hhaXRhbnlhIiwiTGFzdE5hbWUiOiJWRURVUlVQQVJUSEkiLCJleHAiOjE2NjQ3MjEyNTgsIlJvbGVJZCI6IjEiLCJpYXQiOjE2NjQ2MzQ4NTh9.--m9tZ0M9IrV-25kulM7TjbH-4kjHmN7Fsp1n0qqtJw"
 //    offLineSelfLearn("E", 3205748, 13, 7, token = token, tenantName = "srichaitanya", tenantId = 2, subTenantId = 358)
@@ -76,7 +83,7 @@ fun main(){
 
 //var subjectId = 1 // PhysicsId: 1, ChemistryId: 2, MathematicsId: 3, BotanyId: 4, ZoologyId: 5
 @RequiresApi(Build.VERSION_CODES.O)
-fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:String, tenantName:String?, tenantId:Int?, subTenantId:Int? ) {
+fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:String, tenantName:String?, tenantId: Int?, subTenantId:Int? ) {
 
 
 //     val BASEURL = "https://selflearnapi.devinfinitylearn.in/api/" // Preprod BaseUrl

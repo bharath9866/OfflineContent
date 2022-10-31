@@ -1,15 +1,73 @@
 package com.example.offlinecontent.offlineContent
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
+import com.example.offlinecontent.offlineContent.AESEnc.decryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.generateIv
 import com.example.offlinecontent.offlineContent.AESEnc.generateKey
+import com.example.offlinecontent.time
 import java.io.File
+import java.nio.file.Paths
+import kotlin.io.path.fileSize
 
 
-fun main(){
-    videoEncryption("D:\\3486982\\2\\3\\decryptedVideos", "D:\\3486982\\2\\3\\video\\")
+@RequiresApi(Build.VERSION_CODES.O)
+fun mainn(){
+    videoEncryption("C:\\Users\\Lenovo\\Desktop\\enc", "C:\\Users\\Lenovo\\Desktop\\dec\\")
+
 }
 
+fun main(){
+
+}
+/*
+fun log10(n){
+    return Math.round(100*Math.log(n)/Math.log(10))/100;
+}
+*/
+
+fun maini(){
+    val const = 100
+    var values:Float = 200f
+
+    repeat(100){
+        print("${values}_${const} - ")
+
+        println("${values/const}")
+
+        values+=1
+
+    }
+
+    /*println(119.0.roundToInt())
+    println(932/100*100+100)
+    println(customRound(132))
+    println(customRound(1302))
+    println(customRound(13))
+    println(customRound(180))
+    println(customRound(199))*/
+}
+
+/*
+1,2,3,4,5,6
+*/
+
+// function to round the number
+fun customRound(n: Int): Int {
+    val b = when(n.toString().length){
+        2 -> 10
+        3 -> 100
+        4 -> 1000
+        5 -> 10000
+        6 -> 100000
+        else -> 10
+    }
+    return ((n / b) * b) + b
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
 fun videoEncryption(sourcePath: String, destinationPath: String ) {
     try {
         //val sourcePath = "D:\\136683\\2\\2\\decryptedVideos"
@@ -125,9 +183,16 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                 println("File name: " + file.name)
                 println("File path: " + file.absolutePath)
                 println("Size :" + file.totalSpace)
-                println(" ")
                 val encryptedFile = File(destinationPath + file.name)
-                encryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
+                val start = time()
+                decryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
+                val end = time()
+
+                println("${end - start}s - "+"${bytesToMb(Paths.get(file.absolutePath).fileSize())}Mb")
+
+                println(" ")
+
+//                decryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
 //                println("File 1 FileDeleted(${file.name}):" + File(sourcePath + "\\" + file.name).delete())
             }
         }
