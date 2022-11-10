@@ -48,10 +48,14 @@ fun bytesToKb(bytes:Long): Long {
     return size_kb
 }
 
-fun bytesToMb(bytes:Long):Double{
-    val size_kb = bytes/1024.0
-    val size_mb = size_kb/1024.0
+fun bytesToMb(bytes:Long):Long{
+    val size_kb = bytes/1024
+    val size_mb = size_kb/1024
     return size_mb
+}
+
+fun mbToGb(mb:Long):Long{
+    return (mb/1024)
 }
 
 fun kbToGb(kb:Long): Long {
@@ -61,9 +65,7 @@ fun kbToGb(kb:Long): Long {
     return size_gb
 }
 
-fun mbToGb(mb:Double):Long{
-    return (mb/1024.0).toLong()
-}
+
 fun bytesToGb(bytes: Long): Long {
     val size_kb = bytes / 1024
     val size_mb = size_kb / 1024

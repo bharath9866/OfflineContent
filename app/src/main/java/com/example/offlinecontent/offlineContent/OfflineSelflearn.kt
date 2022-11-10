@@ -9,9 +9,11 @@ import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserflash
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.Data
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.TopicsAndSubtopics
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
+import com.example.offlinecontent.generateDirectorforsubtopic.writeToExcelFile
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
 import java.io.InputStream
 import java.nio.file.Files
@@ -19,65 +21,25 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun main(){
+fun main() {
 
+    /*uamRequest("ADM003")?.apply {
+        offLineSelfLearn(
+            drive = "D",
+            userId = userDto?.userId ?: 0,
+            gradeId = userDto?.grade?.gradeId ?: 0,
+            examId = userDto?.exams?.get(0)?.examId ?: 0,
+            token = accessToken ?: "",
+            tenantName = tenantName,
+            tenantId = userDto?.tenantId ?: 0,
+            subTenantId = userDto?.subTenant ?: 0
+        )
+    }*/
 
-//    uamRequest("DUMMY0301")?.apply {
-//        offLineSelfLearn(drive = "E", userId = userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0, token = accessToken?:"", tenantName = tenantName, tenantId = userDto?.campus?.get(0)?.tenantId?:0, subTenantId = userDto?.subTenant?:0)
-//    }
-//
-//    val token = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0Njk5MDIiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDU3NDgiLCJGaXJzdE5hbWUiOiJTQVRZQSBMT0hJVEgiLCJUZW5hbnRDb2RlIjoic3JpY2hhaXRhbnlhIiwiTGFzdE5hbWUiOiJWRURVUlVQQVJUSEkiLCJleHAiOjE2NjQ3MjEyNTgsIlJvbGVJZCI6IjEiLCJpYXQiOjE2NjQ2MzQ4NTh9.--m9tZ0M9IrV-25kulM7TjbH-4kjHmN7Fsp1n0qqtJw"
-//    offLineSelfLearn("E", 3205748, 13, 7, token = token, tenantName = "srichaitanya", tenantId = 2, subTenantId = 358)
+    //    getImages("E", 3205748, 13, 7)
+        getVideos("F", 3585440, 2, 3)
+    //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
 
-//    getImages("E", 3205748, 13, 7)
-
-    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
-
-//    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
-
-//    val token = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0Njk5MDIiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDU3NDgiLCJGaXJzdE5hbWUiOiJTQVRZQSBMT0hJVEgiLCJUZW5hbnRDb2RlIjoic3JpY2hhaXRhbnlhIiwiTGFzdE5hbWUiOiJWRURVUlVQQVJUSEkiLCJleHAiOjE2NjQ3MjEyNTgsIlJvbGVJZCI6IjEiLCJpYXQiOjE2NjQ2MzQ4NTh9.--m9tZ0M9IrV-25kulM7TjbH-4kjHmN7Fsp1n0qqtJw"
-//    offLineSelfLearn("E", 3205748, 13, 7, token = token, tenantName = "srichaitanya", tenantId = 2, subTenantId = 358)
-//    getImages("E", 3205748, 13, 7)
-//    getVideos("E", 3205748, 13, 7)
-
-//    println("")
-//    println("6th(13) CBSE(6)")
-//    println("")
-//
-//    val token1 = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1MzNjk5NzUiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMTI5MTciLCJGaXJzdE5hbWUiOiJTIFMgTSBSQU1BS1JJU0hOQSBSQUpVIiwiVGVuYW50Q29kZSI6InNyaWNoYWl0YW55YSIsIkxhc3ROYW1lIjoiTUFSRUxMQSIsImV4cCI6MTY2NDcyMTQwMSwiUm9sZUlkIjoiMSIsImlhdCI6MTY2NDYzNTAwMX0.PrDdoP26kgZGbQOeulEKkSl3BM3EKyE8iU8p3KqDGGo"
-//    offLineSelfLearn("E", 3212917, 13, 6, token = token1, tenantName = "srichaitanya", tenantId = 2, subTenantId = 380)
-//    getImages("E", 3212917, 13, 6)
-//    getVideos("E", 3212917, 13, 6)
-//
-//    println("")
-//    println("7th(14) AP STATE BOARD(7)")
-//    println("")
-//
-//    val token2 = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0NTU4NTMiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDY1NTciLCJGaXJzdE5hbWUiOiJTUkkgTklESEkiLCJUZW5hbnRDb2RlIjoic3JpY2hhaXRhbnlhIiwiTGFzdE5hbWUiOiJNQU5EQVJBUFUiLCJleHAiOjE2NjQ3MjIwMjUsIlJvbGVJZCI6IjEiLCJpYXQiOjE2NjQ2MzU2MjV9.7aUsfF88J6qU897bcNW2y0qIvbph_TxtvyxWwYJTCzo"
-//    offLineSelfLearn("E", 3206557, 14, 7, token = token2, tenantName = "srichaitanya", tenantId = 2, subTenantId = 333)
-//    getImages("E", 3206557, 14, 7)
-//    getVideos("E", 3206557, 14, 7)
-//
-//    println("")
-//    println("7th(14) TS STATE BOARD(8)")
-//    println("")
-//
-//    val token3 = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1MzNDg2NzIiLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMTQwMTciLCJGaXJzdE5hbWUiOiJVTUFSIEZBUkhBTiIsIlRlbmFudENvZGUiOiJzcmljaGFpdGFueWEiLCJMYXN0TmFtZSI6Ik1PSEFNTUFEIiwiZXhwIjoxNjY0NzIxNjQ2LCJSb2xlSWQiOiIxIiwiaWF0IjoxNjY0NjM1MjQ2fQ.fPS-urIRJCO4wOBSP1CKNmQ49u8pRfvjJ7t9O7mx7-M"
-//    offLineSelfLearn("E", 3214017, 14, 8, token = token3, tenantName = "srichaitanya", tenantId = 2, subTenantId = 319)
-//    getImages("E", 3214017, 14, 8)
-//    getVideos("E", 3214017, 14, 8)
-//
-//
-//    println("")
-//    println("8th(15) AP STATE BOARD(7)")
-//    println("")
-//
-//    val token4 = "eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJTQ1M0Njg2MjciLCJUZW5hbnRJZCI6MiwiUm9sZU5hbWUiOiJTdHVkZW50IiwiREJJZCI6IjMyMDU4MTUiLCJGaXJzdE5hbWUiOiJET1JJS0EgSElNQSBTUkVFIiwiVGVuYW50Q29kZSI6InNyaWNoYWl0YW55YSIsIkxhc3ROYW1lIjoiS0FORFJFR1VMQSIsImV4cCI6MTY2NDcyMTAwNCwiUm9sZUlkIjoiMSIsImlhdCI6MTY2NDYzNDYwNH0.F7L43SeRC3amn5DVLMxf-Ju74OiCejume_b3FyP7mp8"
-//    offLineSelfLearn("E", 3205815, 15, 7, token = token4, tenantName = "srichaitanya", tenantId = 2, subTenantId = 286)
-//    getImages("E", 3205815, 15, 7)
-//    getVideos("E", 3205815, 15, 7)
-
-//    videoEncryption("D:\\3486982\\2\\3\\decryptedVideos", "D:\\3486982\\2\\3\\videos\\")
 }
 
 

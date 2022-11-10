@@ -63,7 +63,7 @@ fun main() {
                                         if (isFileExists(File(src))) {
                                             duplicateFile += fileCopy(src, dest + "\\$ele")
                                             listNos.add(ele)
-                                            // Printing Non-MP4 Videos
+                                            // Printing Non-MP4 Vidqaeos
                                         } else {
                                             File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").appendText(ele + "\n")
                                             print("Video NotExist:: S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(src).name}")

@@ -15,13 +15,14 @@ import kotlin.io.path.fileSize
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun mainn(){
-    videoEncryption("C:\\Users\\Lenovo\\Desktop\\enc", "C:\\Users\\Lenovo\\Desktop\\dec\\")
 
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-
+    videoEncryption("D:\\1111\\videos", "D:\\1111\\vi\\")
 }
+
 /*
 fun log10(n){
     return Math.round(100*Math.log(n)/Math.log(10))/100;
@@ -108,11 +109,11 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                                                             file6,
                                                             encryptedFile
                                                         )
-//                                                        println(
-//                                                            "FileDeleted(${file6.name}):" + File(
-//                                                                sourcePath + "\\" + file6.name
-//                                                            ).delete()
-//                                                        )
+                                                        println(
+                                                            "FileDeleted(${file6.name}):" + File(
+                                                                sourcePath + "\\" + file6.name
+                                                            ).delete()
+                                                        )
                                                     }
                                                 }
                                             } else {
@@ -128,7 +129,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                                                     file5,
                                                     encryptedFile
                                                 )
-//                                                println("FileDeleted(${file5.name}):" + File(sourcePath + "\\" + file5.name).delete())
+                                                println("FileDeleted(${file5.name}):" + File(sourcePath + "\\" + file5.name).delete())
                                             }
                                         }
                                     } else {
@@ -144,7 +145,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                                             file4,
                                             encryptedFile
                                         )
-//                                        println("FileDeleted(${file4.name}):" + File(sourcePath + "\\" + file4.name).delete())
+                                        println("FileDeleted(${file4.name}):" + File(sourcePath + "\\" + file4.name).delete())
                                     }
                                 }
                             } else {
@@ -160,7 +161,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                                     file3,
                                     encryptedFile
                                 )
-//                                println("FileDeleted(${file3.name}):" + File(sourcePath + "\\" + file3.name).delete())
+                                println("FileDeleted(${file3.name}):" + File(sourcePath + "\\" + file3.name).delete())
                             }
                         }
                     } else {
@@ -176,7 +177,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                             file2,
                             encryptedFile
                         )
-//                        println("FileDeleted(${file2.name}):" + File(sourcePath + "\\" + file2.name).delete())
+                        println("FileDeleted(${file2.name}):" + File(sourcePath + "\\" + file2.name).delete())
                     }
                 }
             } else {
@@ -184,16 +185,9 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                 println("File path: " + file.absolutePath)
                 println("Size :" + file.totalSpace)
                 val encryptedFile = File(destinationPath + file.name)
-                val start = time()
-                decryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
-                val end = time()
-
-                println("${end - start}s - "+"${bytesToMb(Paths.get(file.absolutePath).fileSize())}Mb")
-
-                println(" ")
-
+                encryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
 //                decryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
-//                println("File 1 FileDeleted(${file.name}):" + File(sourcePath + "\\" + file.name).delete())
+                println("File 1 FileDeleted(${file.name}):" + File(sourcePath + "\\" + file.name).delete())
             }
         }
     } catch (e: Exception) {
