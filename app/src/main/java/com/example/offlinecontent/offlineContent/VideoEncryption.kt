@@ -3,76 +3,88 @@ package com.example.offlinecontent.offlineContent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
+import com.example.offlinecontent.generateDirectorforsubtopic.fileCopy
 import com.example.offlinecontent.offlineContent.AESEnc.decryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.generateIv
 import com.example.offlinecontent.offlineContent.AESEnc.generateKey
-import com.example.offlinecontent.time
+import com.example.offlinecontent.uamRequest
 import java.io.File
 import java.nio.file.Paths
 import kotlin.io.path.fileSize
 
-
-@RequiresApi(Build.VERSION_CODES.O)
-fun mainn(){
-
-}
-
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-    videoEncryption("D:\\1111\\videos", "D:\\1111\\vi\\")
-}
-
-/*
-fun log10(n){
-    return Math.round(100*Math.log(n)/Math.log(10))/100;
-}
-*/
-
-fun maini(){
-    val const = 100
-    var values:Float = 200f
-
-    repeat(100){
-        print("${values}_${const} - ")
-
-        println("${values/const}")
-
-        values+=1
-
+    val usersList = arrayListOf("ADM033")
+    usersList.forEachIndexed { index, user ->
+        uamRequest(user)?.apply {
+//            getVideos("D", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            videoEncryption(
+                sourcePath = "D:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "D:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+            )
+        }
     }
-
-    /*println(119.0.roundToInt())
-    println(932/100*100+100)
-    println(customRound(132))
-    println(customRound(1302))
-    println(customRound(13))
-    println(customRound(180))
-    println(customRound(199))*/
-}
-
-/*
-1,2,3,4,5,6
-*/
-
-// function to round the number
-fun customRound(n: Int): Int {
-    val b = when(n.toString().length){
-        2 -> 10
-        3 -> 100
-        4 -> 1000
-        5 -> 10000
-        6 -> 100000
-        else -> 10
-    }
-    return ((n / b) * b) + b
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun videoEncryption(sourcePath: String, destinationPath: String ) {
+fun videoEncryption(sourcePath: String, destinationPath: String ){
+
+    val key = generateKey("0123456789abcdef".toByteArray())
+    val algorithm = "AES/CBC/PKCS5Padding"
+    val ivParameterSpec = generateIv("fedcba9876543210".toByteArray())
+
+    val tempPath = "${destinationPath}\\temp"
+    if (!File(tempPath).exists()) createDirectory(Paths.get(tempPath))
+
+    try {
+
+        val list = File(sourcePath).listFiles()
+
+        list?.let {
+
+            for (decryptedInputFile in list) {
+                if (!decryptedInputFile.isDirectory) {
+
+                    val encryptedFileInTemp = File(tempPath + "\\" + decryptedInputFile.name)
+
+                    AESEnc.encryptFile(algorithm = algorithm, key = key, iv = ivParameterSpec, inputFile = decryptedInputFile, outputFile = encryptedFileInTemp)
+
+                    println("Successfully Encrypted from ${decryptedInputFile.absolutePath} to ${encryptedFileInTemp.absolutePath}")
+
+                    fileCopy(src = encryptedFileInTemp.absolutePath,
+                        dest = "${destinationPath}\\${decryptedInputFile.name}")
+
+                    if (encryptedFileInTemp.delete()) println("$encryptedFileInTemp file from Temp Folder deleted SuccessFully\n")
+
+                }
+            }
+
+
+            println("\nTemp file Deleted Successfully: ${File(tempPath).delete()}\n")
+
+
+        }
+
+    } catch (e:Exception){
+        println(e)
+    }
+
+}
+
+
+
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun oldVideoEncryption(sourcePath: String, destinationPath: String ) {
+
+    val decryptedVideosPath = "${sourcePath}\\temp"
+    if (!File(decryptedVideosPath).exists()) { createDirectory(Paths.get(decryptedVideosPath)) }
+
     try {
         //val sourcePath = "D:\\136683\\2\\2\\decryptedVideos"
-        //val destinationPath = "D:\\136683\\2\\2\\videos\\"
+        //val destinationPath = "D:\\136683\\2\\2\\videos"
         val key = generateKey("0123456789abcdef".toByteArray())
         val algorithm = "AES/CBC/PKCS5Padding"
         val ivParameterSpec = generateIv("fedcba9876543210".toByteArray())
@@ -181,6 +193,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                     }
                 }
             } else {
+
                 println("File name: " + file.name)
                 println("File path: " + file.absolutePath)
                 println("Size :" + file.totalSpace)

@@ -17,7 +17,10 @@ import kotlin.io.path.fileSize
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-    getVideos("D", 3585449, 2, 1, usage = "download")
+
+//    getImages("D", 3585472, 3, 2)
+    getVideos("D", 3585472, 3, 2, usage = "download")
+//    videoEncryption("D:\\3585472\\3\\2\\decryptedVideos", "D:\\3585472\\3\\2\\videos")
 
     //getSubjectImages("D", 136683, 7, 1)
     //images("D", 136683, 2, 2)
@@ -25,7 +28,6 @@ fun main(){
 
 //    getImages("D", 3585449, 2, 1)
 //    getVideos("D", 3585449, 2, 1)
-//    videoEncryption("G:\\3585449\\2\\1\\decryptedVideos", "G:\\3585449\\2\\1\\videos\\")
 
     /*val list = arrayListOf("1654691407439.mp4", "1664792379321.mp4")
 
@@ -43,31 +45,6 @@ fun main(){
         }
     }*/
 
-    /*getVideos("D", 3034516, 7, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585441, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585442, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585443, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585444, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585445, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585449, 2, 1, usage = "getSizeOfTheContent")
-    getVideos("D", 3585450, 2, 1, usage = "getSizeOfTheContent")
-    getVideos("D", 3585453, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585456, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585457, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585458, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585461, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585462, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585463, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585464, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585465, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585466, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585472, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585475, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585476, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585477, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585479, 7, 3, usage = "getSizeOfTheContent")*/
 
 }
 
@@ -97,7 +74,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
     val decryptedVideosPath = "${dir}:\\${userId}\\${gradeId}\\${examId}\\decryptedVideos"
     if (!File(decryptedVideosPath).exists()) { createDirectory(Paths.get(decryptedVideosPath)) }
 
-    val encryptedPath = "${dir}:\\${userId}\\${gradeId}\\${examId}\\videos"
+    val encryptedPath = "F:\\${userId}\\${gradeId}\\${examId}\\videos"
     if(!File(encryptedPath).exists()) { createDirectory(Paths.get(encryptedPath)) }
 
     val nonMp4Videos = "${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4Videos"
@@ -160,7 +137,6 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
                                                         val srcTwo = "Z:\\il-cms-assets-local\\media\\$ele"
 
                                                         if(isFileExists(File(srcOne))){
-                                                            val srcOneSize = Paths.get(srcOne).fileSize()
 
                                                             if(usage.contains("download")) {
 
@@ -168,28 +144,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
 
                                                                     if (isFileExists(File(encryptedPath + "\\$ele"))) {
 
-                                                                        val encryptedFilePath = encryptedPath+"\\$ele"
-                                                                        val encryptedVideoSize = Paths.get(encryptedFilePath).fileSize()
-
-                                                                        if(srcOneSize < encryptedVideoSize) {
-
-                                                                            println("Copied Successfully from Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
-                                                                            duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
-
-                                                                            println("Delete Encrypted File: ${File(encryptedFilePath).delete()}")
-
-                                                                            listNos.add(srcOne)
-
-                                                                        } else if(srcOneSize > encryptedVideoSize) {
-
-                                                                            println("Delete Encrypted File: ${File(encryptedFilePath).delete()}")
-
-                                                                            println("Copied Successfully from Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
-                                                                            duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
-
-                                                                        } else {
-                                                                            println("$ele file is already Encrypted From Compressed File Block")
-                                                                        }
+                                                                        print("$ele file is already Encrypted From Compressed File Block:: S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
 
                                                                     } else {
 
@@ -219,7 +174,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
                                                                 try {
                                                                     if(isFileExists(File(encryptedPath+"\\$ele"))) {
 
-                                                                        println("$ele file is already Encrypted")
+                                                                        println("$ele file is already Encrypted:: S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
 
                                                                     } else {
 
@@ -873,6 +828,10 @@ private fun getImageNumList(pathname: String):ArrayList<String>? {
 
 fun <T> hasDuplicates(arr: Array<T>): Boolean {
     return arr.size != arr.distinct().count();
+}
+
+fun <T> arrUniqueCount(arr: Array<T>): Int {
+    return arr.distinct().count()
 }
 
 fun isFileExists(file: File): Boolean {
