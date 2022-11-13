@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
 import com.example.offlinecontent.generateDirectorforsubtopic.fileCopy
+import com.example.offlinecontent.generateDirectorforsubtopic.isFileExists
 import com.example.offlinecontent.offlineContent.AESEnc.decryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.generateIv
@@ -15,13 +16,13 @@ import kotlin.io.path.fileSize
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-    val usersList = arrayListOf("ADM033")
+    val usersList = arrayListOf("ADM038")
     usersList.forEachIndexed { index, user ->
         uamRequest(user)?.apply {
 //            getVideos("D", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
             videoEncryption(
-                sourcePath = "D:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
-                destinationPath = "D:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+                sourcePath = "Y:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "Y:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
             )
         }
     }
@@ -44,25 +45,27 @@ fun videoEncryption(sourcePath: String, destinationPath: String ){
         list?.let {
 
             for (decryptedInputFile in list) {
-                if (!decryptedInputFile.isDirectory) {
+                if(!isFileExists(File("${destinationPath}\\${decryptedInputFile.name}"))) {
+                    if (!decryptedInputFile.isDirectory) {
 
-                    val encryptedFileInTemp = File(tempPath + "\\" + decryptedInputFile.name)
+                        val encryptedFileInTemp = File(tempPath + "\\" + decryptedInputFile.name)
 
-                    AESEnc.encryptFile(algorithm = algorithm, key = key, iv = ivParameterSpec, inputFile = decryptedInputFile, outputFile = encryptedFileInTemp)
+                        encryptFile(algorithm = algorithm, key = key, iv = ivParameterSpec, inputFile = decryptedInputFile, outputFile = encryptedFileInTemp)
 
-                    println("Successfully Encrypted from ${decryptedInputFile.absolutePath} to ${encryptedFileInTemp.absolutePath}")
+                        println("Successfully Encrypted from ${decryptedInputFile.absolutePath} to ${encryptedFileInTemp.absolutePath}")
 
-                    fileCopy(src = encryptedFileInTemp.absolutePath,
-                        dest = "${destinationPath}\\${decryptedInputFile.name}")
+                        fileCopy(src = encryptedFileInTemp.absolutePath, dest = "${destinationPath}\\${decryptedInputFile.name}")
 
-                    if (encryptedFileInTemp.delete()) println("$encryptedFileInTemp file from Temp Folder deleted SuccessFully\n")
+                        if (encryptedFileInTemp.delete()) println("$encryptedFileInTemp file from Temp Folder deleted SuccessFully\n")
 
+
+                    }
+                } else {
+                    println("${decryptedInputFile.absolutePath} file is already Encrypted")
                 }
             }
 
-
             println("\nTemp file Deleted Successfully: ${File(tempPath).delete()}\n")
-
 
         }
 

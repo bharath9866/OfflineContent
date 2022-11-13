@@ -760,6 +760,27 @@ fun fileCopy(src: String, dest: String): Int{
     return duplicateFile
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+fun fileCopyWithOutCheckingCondition(src: String, dest: String) {
+    val src1 = Paths.get(src)
+    val dest1 = Paths.get(dest)
+
+    try {
+
+        val output = Files.copy(src1, dest1)
+        if (output != null) {
+            println("File Copied successfully from $src to $dest")
+        } else {
+            println("File Not Copied Successfully")
+        }
+
+    } catch (e: Exception) {
+        print(e.stackTraceToString())
+    }
+
+}
+
+
 
 // Checking Subfolder in Z: Drive
 @RequiresApi(Build.VERSION_CODES.O)
