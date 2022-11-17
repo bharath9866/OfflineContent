@@ -2,6 +2,7 @@ package com.example.offlinecontent.offlineContent
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.offlinecontent.generateDirectorforsubtopic.getImages
 import com.example.offlinecontent.generateDirectorforsubtopic.getVideos
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserchaptersforexamandsubject.GetUserChaptersForExamAndSubject
@@ -10,6 +11,7 @@ import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsub
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.TopicsAndSubtopics
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
 import com.example.offlinecontent.generateDirectorforsubtopic.writeToExcelFile
+import com.example.offlinecontent.uamRequest
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
@@ -23,22 +25,42 @@ import java.nio.file.Paths
 @RequiresApi(Build.VERSION_CODES.O)
 fun main() {
 
-    /*uamRequest("ADM003")?.apply {
-        offLineSelfLearn(
-            drive = "D",
-            userId = userDto?.userId ?: 0,
-            gradeId = userDto?.grade?.gradeId ?: 0,
-            examId = userDto?.exams?.get(0)?.examId ?: 0,
-            token = accessToken ?: "",
-            tenantName = tenantName,
-            tenantId = userDto?.tenantId ?: 0,
-            subTenantId = userDto?.subTenant ?: 0
-        )
-    }*/
+    /**
+     * INPUTS
+     */
+    val usersList = arrayListOf("ADM040")
+    val drive = "F"
+
+    /**
+     * CALLING FUNCTIONS
+     */
+    usersList.forEachIndexed { index, user ->
+        uamRequest(user)?.apply {
+            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            videoEncryption(
+                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+            )
+        }
+    }
+
+//    uamRequest("ADM003")?.apply {
+//        offLineSelfLearn(
+//            drive = "D",
+//            userId = userDto?.userId ?: 0,
+//            gradeId = userDto?.grade?.gradeId ?: 0,
+//            examId = userDto?.exams?.get(0)?.examId ?: 0,
+//            token = accessToken ?: "",
+//            tenantName = tenantName,
+//            tenantId = userDto?.tenantId ?: 0,
+//            subTenantId = userDto?.subTenant ?: 0
+//        )
+//    }
 
     //    getImages("E", 3205748, 13, 7)
-        getVideos("F", 3585440, 2, 3)
-    //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
+//        getVideos("F", 3585440, 2, 3)
+    //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos")
 
 }
 

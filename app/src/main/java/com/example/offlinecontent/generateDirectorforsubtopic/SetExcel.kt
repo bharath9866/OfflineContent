@@ -46,6 +46,7 @@ fun readFromExcelFile(filepath: String) {
 
     //Get reference to first sheet:
     val xlWs = xlWb.getSheetAt(0)
+
     println(xlWs.getRow(rowNumber).getCell(columnNumber))
 }
 

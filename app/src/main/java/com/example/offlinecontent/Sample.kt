@@ -3,9 +3,11 @@ package com.example.offlinecontent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.offlinecontent.generateDirectorforsubtopic.fileCopy
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.detailedAnalysis.DetailedAnalysisReportResponse
-import com.example.offlinecontent.generateDirectorforsubtopic.modal.tokenModal.UAMRequest
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.tokenModal.UAMResponse
+import com.example.offlinecontent.offlineContent.AESEnc
+import com.example.offlinecontent.offlineContent.createDirectory
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
@@ -17,15 +19,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
+import java.nio.file.Paths
 import java.util.*
 import java.util.concurrent.TimeUnit
-
-fun main(){
-//    uamRequest(uamRequest = UAMRequest(uid = "DUMMY0301", password = "test123"))
-    /*val uam = UAMRequest(uid = "DUMMY0301", password = "test123").toString()
-    println(uam.toString())*/
-    uamRequest("dummy0301")
-}
 
 fun uamRequest(uid:String, password:String = "test123"): UAMResponse? {
 
