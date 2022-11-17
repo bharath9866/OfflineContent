@@ -2,15 +2,14 @@ package com.example.offlinecontent.offlineContent
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
+import com.example.offlinecontent.generateDirectorforsubtopic.getImages
+import com.example.offlinecontent.generateDirectorforsubtopic.getVideos
 import com.example.offlinecontent.offlineContent.AESEnc.decryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.generateIv
 import com.example.offlinecontent.offlineContent.AESEnc.generateKey
-import com.example.offlinecontent.time
+import com.example.offlinecontent.uamRequest
 import java.io.File
-import java.nio.file.Paths
-import kotlin.io.path.fileSize
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -20,7 +19,29 @@ fun mainn(){
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-    videoEncryption("D:\\1111\\videos", "D:\\1111\\vi\\")
+
+    videoEncryption(sourcePath = "C:\\temp\\decryption", destinationPath = "C:\\temp\\encryption\\")
+
+//    val usersList = arrayListOf("ADM001", "ADM002", "ADM003", "ADM004", "ADM005", "ADM006", "ADM010", "ADM011", "ADM014", "ADM017", "ADM018", "ADM019", "ADM022", "ADM023", "ADM024", "ADM025", "ADM026", "ADM027", "ADM033","ADM036", "ADM037", "ADM038", "ADM040", "ILTT7")
+//
+////    val usersList = arrayListOf("ADM002")
+//    val totalImages: ArrayList<String> = arrayListOf()
+//
+//    usersList.forEachIndexed { index, user ->
+//        uamRequest(user)?.apply {
+//
+//            getImages("C", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0, adm = user)
+//
+//            getVideos("C", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+////            videoEncryption(
+////                sourcePath = "Y:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+////                destinationPath = "Y:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos\\"
+////            )
+//
+//        }
+//    }
+//
+//    totalImages.distinct().forEach { println(it) }
 }
 
 /*
@@ -187,7 +208,7 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
                 val encryptedFile = File(destinationPath + file.name)
                 encryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
 //                decryptFile(algorithm, key, ivParameterSpec, file, encryptedFile)
-                println("File 1 FileDeleted(${file.name}):" + File(sourcePath + "\\" + file.name).delete())
+                println("File 1 FileDeleted(${file.name}):" + File(sourcePath + "\\" + file.name))
             }
         }
     } catch (e: Exception) {
