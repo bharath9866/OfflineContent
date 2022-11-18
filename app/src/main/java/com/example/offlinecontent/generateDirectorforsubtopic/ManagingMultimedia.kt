@@ -167,30 +167,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
                                                                 try {
 
                                                                     if (isFileExists(File(encryptedPath + "\\$ele"))) {
-
-                                                                        val encryptedFilePath = encryptedPath+"\\$ele"
-                                                                        val encryptedVideoSize = Paths.get(encryptedFilePath).fileSize()
-
-                                                                        if(srcOneSize < encryptedVideoSize) {
-
-                                                                            println("Copied Successfully from Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
-                                                                            duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
-
-                                                                            println("Delete Encrypted File: ${File(encryptedFilePath).delete()}")
-
-                                                                            listNos.add(srcOne)
-
-                                                                        } else if(srcOneSize > encryptedVideoSize) {
-
-                                                                            println("Delete Encrypted File: ${File(encryptedFilePath).delete()}")
-
-                                                                            println("Copied Successfully from Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
-                                                                            duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
-
-                                                                        } else {
-                                                                            println("$ele file is already Encrypted From Compressed File Block")
-                                                                        }
-
+                                                                        println("$ele file is already Encrypted From Compressed File Block")
                                                                     } else {
 
                                                                         println("Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
@@ -533,6 +510,12 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
                                                             }
 
                                                         } else {
+
+                                                            if (fileCopy(src, dest + it) == 1) {
+
+                                                                totalImages.add(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
+
+                                                            }
 
                                                             File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").appendText(File(src).name +  "\n")
 

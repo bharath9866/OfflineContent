@@ -3,11 +3,14 @@ package com.example.offlinecontent.offlineContent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.bytesToMb
+import com.example.offlinecontent.generateDirectorforsubtopic.getImages
+import com.example.offlinecontent.generateDirectorforsubtopic.getVideos
 import com.example.offlinecontent.offlineContent.AESEnc.decryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.encryptFile
 import com.example.offlinecontent.offlineContent.AESEnc.generateIv
 import com.example.offlinecontent.offlineContent.AESEnc.generateKey
 import com.example.offlinecontent.time
+import com.example.offlinecontent.uamRequest
 import java.io.File
 import java.nio.file.Paths
 import kotlin.io.path.fileSize
@@ -20,7 +23,17 @@ fun mainn(){
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun main(){
-    videoEncryption("D:\\1111\\videos", "D:\\1111\\vi\\")
+    val usersList = arrayListOf("ADM036")
+    usersList.forEachIndexed { index, user ->
+        uamRequest(user)?.apply {
+            getImages("F", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            getVideos("F", userDto?.userId?:0, gradeId = userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            videoEncryption(
+                sourcePath = "F:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "F:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+            )
+        }
+    }
 }
 
 /*
@@ -211,4 +224,3 @@ fun videoEncryption(sourcePath: String, destinationPath: String ) {
 //        AESEnc.encryptFile(algorithm, key, ivParameterSpec, inputFile, encryptedFile);
 //        AESEnc.encryptFile(algorithm, key, ivParameterSpec, inputFile2, encryptedFile2);
 //        AESEnc.encryptFile(algorithm, key, ivParameterSpec, inputFile3, encryptedFile3);
-
