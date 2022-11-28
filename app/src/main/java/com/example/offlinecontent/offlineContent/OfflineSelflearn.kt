@@ -29,14 +29,27 @@ fun main() {
      * INPUTS
      */
     val usersList = arrayListOf("ADM040")
-    val drive = "F"
+    val drive = "D"
 
     /**
      * CALLING FUNCTIONS
      */
+    uamRequest("ADM040")?.apply {
+        offLineSelfLearn(
+            drive = "D",
+            userId = userDto?.userId ?: 0,
+            gradeId = userDto?.grade?.gradeId ?: 0,
+            examId = userDto?.exams?.get(0)?.examId ?: 0,
+            token = accessToken ?: "",
+            tenantName = tenantName,
+            tenantId = userDto?.tenantId ?: 0,
+            subTenantId = userDto?.subTenant ?: 0
+        )
+    }
+
     usersList.forEachIndexed { index, user ->
         uamRequest(user)?.apply {
-            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+//            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
             getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
             videoEncryption(
                 sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
@@ -45,18 +58,6 @@ fun main() {
         }
     }
 
-//    uamRequest("ADM003")?.apply {
-//        offLineSelfLearn(
-//            drive = "D",
-//            userId = userDto?.userId ?: 0,
-//            gradeId = userDto?.grade?.gradeId ?: 0,
-//            examId = userDto?.exams?.get(0)?.examId ?: 0,
-//            token = accessToken ?: "",
-//            tenantName = tenantName,
-//            tenantId = userDto?.tenantId ?: 0,
-//            subTenantId = userDto?.subTenant ?: 0
-//        )
-//    }
 
     //    getImages("E", 3205748, 13, 7)
 //        getVideos("F", 3585440, 2, 3)

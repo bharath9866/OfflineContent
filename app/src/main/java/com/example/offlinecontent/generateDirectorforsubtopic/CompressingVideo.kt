@@ -1,35 +1,41 @@
 package com.example.offlinecontent.generateDirectorforsubtopic
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import io.github.techgnious.IVCompressor
-import net.bramp.ffmpeg.FFmpeg
-import net.bramp.ffmpeg.FFprobe
+import io.github.techgnious.dto.VideoFormats
+import io.github.techgnious.utils.IVFileUtils
 import java.io.File
-import java.nio.file.Files
-import java.nio.file.Paths
+import java.io.FileOutputStream
 
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun main(){
+fun main() {
+    println(x.arr.sortedBy { it })
 
-    val file = File("")
+    val ctx: Context
+
     val compressor = IVCompressor()
 
+    val converter = compressor.convertVideoFormat(
+        IVFileUtils.copyToByteArray(File("C:\\temp\\decryption\\1656659033217.mov")),
+        VideoFormats.valueOf("mov"),
+        VideoFormats.MP4
+    )
 
-    val filePath = "/path/to/file"
+    val out = FileOutputStream("C:\\temp\\conversion\\1656659033217.mp4")
+    out.write(converter)
+    out.close()
 
-    // file to byte[], Path
-
-    // file to byte[], Path
-    val bytes: ByteArray = Files.readAllBytes(Paths.get(filePath))
-
-//    compressor.convertVideoFormat(bytes)
-//    val file = File("")
-//    compressor.reduceVideoSize(file.getBytes(), VideoFormats.MP4, ResizeResolution.R480P);
-
-
-    val ffmpeg = FFmpeg("/path/to/ffmpeg")
-    val ffprobe = FFprobe("/path/to/ffprobe")
-    
 }
+
+data class CompressingVideo(
+    val id:Int = 0,
+    val arr:ArrayList<Int> = arrayListOf()
+)
+
+val x = CompressingVideo(
+    id = 0,
+    arr = arrayListOf(3,2,4,1)
+)
