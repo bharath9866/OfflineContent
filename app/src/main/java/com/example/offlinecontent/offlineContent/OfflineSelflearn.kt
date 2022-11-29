@@ -9,11 +9,11 @@ import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserflash
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.Data
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandsubtopics.TopicsAndSubtopics
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.topicsandvideos.TopicsAndVideos
-import com.example.offlinecontent.generateDirectorforsubtopic.writeToExcelFile
+import com.example.offlinecontent.offlineContent.Utilities.createDirectory
+import com.example.offlinecontent.offlineContent.Utilities.writeJsonFile
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
 import java.io.InputStream
 import java.nio.file.Files
@@ -23,7 +23,14 @@ import java.nio.file.Paths
 @RequiresApi(Build.VERSION_CODES.O)
 fun main() {
 
-    /*uamRequest("ADM003")?.apply {
+    /**
+     * INPUTS
+     */
+    val usersList = arrayListOf("ADM040")
+    val drive = "D"
+
+    /* CALLING FUNCTIONS */
+    getUAMToken("ADM040")?.apply {
         offLineSelfLearn(
             drive = "D",
             userId = userDto?.userId ?: 0,
@@ -34,11 +41,23 @@ fun main() {
             tenantId = userDto?.tenantId ?: 0,
             subTenantId = userDto?.subTenant ?: 0
         )
-    }*/
+    }
+
+    usersList.forEachIndexed { index, user ->
+        getUAMToken(user)?.apply {
+//            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            videoEncryption(
+                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+            )
+        }
+    }
+
 
     //    getImages("E", 3205748, 13, 7)
-        getVideos("F", 3585440, 2, 3)
-    //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos\\")
+//        getVideos("F", 3585440, 2, 3)
+    //    videoEncryption("D:\\3486982\\2\\3\\decrypted", "F:\\3486982\\2\\3\\videos")
 
 }
 
@@ -57,7 +76,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
 
     val getSubjects_url  = BASEURL+"selflearn/getUserSubjectsPerExam?examId=${examId}&gradeId=${gradeId}&userId=${userId}"
 
-    val varGetSubjectResponse = getSelfResponse(url = getSubjects_url, token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId)
+    val varGetSubjectResponse = getSelfLearnApiResponse(requestUrl = getSubjects_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
     // SUBJECTS
     if(!varGetSubjectResponse.contains("false : ", true)) {
@@ -106,19 +125,15 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                      /* ----------------------------------------- CHAPTERS ------------------------------------------- */
 
                     val getChapter_Url = BASEURL+"selflearn/getUserChaptersForExamAndSubject?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&userId=${userId}"
-                    val varGetChapterResponse = getSelfResponse(getChapter_Url, token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId)
+                    val varGetChapterResponse = getSelfLearnApiResponse(getChapter_Url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
                     if(!varGetChapterResponse.contains("false : ", true)){
 
                         // Creating CHAPTER JSON File
                         val chapterJSONPath = "${drive}:\\${userId}\\${gradeId}\\${examId}\\${subjectIdList[s]}\\getUserChaptersForExamAndSubject.json"
 
-                        if(!File(chapterJSONPath).exists()){
-                            println("Subject: ${subjectIdList[s]}, ChapterJSONFile Created: "+File(chapterJSONPath).createNewFile())
-                        }
-                        File(chapterJSONPath).bufferedWriter().use { out ->
-                            out.write(varGetChapterResponse)
-                        }
+
+                        println("Subject: ${subjectIdList[s]}, ChapterJSONFile Created: "+chapterJSONPath.writeJsonFile(varGetChapterResponse))
 
                         // Reading ChapterModalData
                         val chapterModalData = Gson().fromJson(varGetChapterResponse, GetUserChaptersForExamAndSubject::class.java).data
@@ -141,7 +156,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                         println("\nSubject: ${subjectIdList[s]}, Chapter: ${chapterIdList[c]}, ArticulationJSONFile Created: "+File(articulationJSONPath).createNewFile())
                                     }
                                     File(articulationJSONPath).bufferedWriter().use { out ->
-                                        out.write(getSelfResponse(getArticulation_url, token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId))
+                                        out.write(getSelfLearnApiResponse(getArticulation_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId))
                                     }
 
 
@@ -163,7 +178,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                             }
 
                                             File(topicAndVideosJSONResponse).bufferedWriter().use { out ->
-                                                out.write(getSelfResponse(getTopicVideos_url, token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId))
+                                                out.write(getSelfLearnApiResponse(getTopicVideos_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId))
                                             }
 
                                             print(", TopicAndVideoJsonFile: True")
@@ -203,13 +218,13 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                         println("Subject: ${subjectIdList[s]}, Chapter: ${chapterIdList[c]}, Practice Json Path: "+File(practiceJSONPath).createNewFile())
                                     }
                                     File(practiceJSONPath).bufferedWriter().use { out ->
-                                        out.write(getSelfResponse(getPractice_url, token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId))
+                                        out.write(getSelfLearnApiResponse(getPractice_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId))
                                     }
 
                                     // ---------------------------------------------- Creating TopicSubtopicJSON File -----------------------------------------------
                                     val topicAndSubtopicJSONPath = "${drive}:\\${userId}\\${gradeId}\\${examId}\\${subjectIdList[s]}\\${chapterIdList[c]}\\topicsAndSubtopics.json"
 
-                                    val getTopicSubtopic_url = getSelfResponse(BASEURL+"selflearn/topicsAndSubtopics?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&chapterId=${chapterIdList[c]}&userId=${userId}", token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId)
+                                    val getTopicSubtopic_url = getSelfLearnApiResponse(BASEURL+"selflearn/topicsAndSubtopics?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&chapterId=${chapterIdList[c]}&userId=${userId}", token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
                                     if(!File(topicAndSubtopicJSONPath).exists()){
                                         println("Subject: ${subjectIdList[s]}, Chapter: ${chapterIdList[c]}, TopicAndSubtopicJSONFile: " + File(topicAndSubtopicJSONPath).createNewFile())
@@ -245,7 +260,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                                         createDirectory(Paths.get(subtopicDir))
 
 
-                                                        val getFlashCard_url = getSelfResponse(BASEURL + "selflearn/getuserflashcardsAndQuestions?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&chapterId=${chapterIdList[c]}&topicId=${topicIdAsKey}&subtopicId=${subtopicValue[subTopicIdAsValue]}&userId=${userId}", token = token, tenantName = tenantName, tenant = tenantId, subTenant = subTenantId)
+                                                        val getFlashCard_url = getSelfLearnApiResponse(BASEURL + "selflearn/getuserflashcardsAndQuestions?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&chapterId=${chapterIdList[c]}&topicId=${topicIdAsKey}&subtopicId=${subtopicValue[subTopicIdAsValue]}&userId=${userId}", token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
                                                         // Printing Id's for Cross Check
                                                         print("\nSubject: ${subjectIdList[s]}, Chapter: ${chapterIdList[c]}, Topic: ${topicIdAsKey}, Subtopic: ${subtopicValue[subTopicIdAsValue]} = ")
@@ -418,14 +433,4 @@ fun topicSubtopicMap(data: Data, subjectId: Int, chapterId: Int) : HashMap<Int, 
 
     print("\nSubject: $subjectId ,Chapter: $chapterId, TopicSubtopic MapList: $topicSubtopicMap")
     return topicSubtopicMap
-}
-
-
-@RequiresApi(Build.VERSION_CODES.O)
-fun createDirectory(directory: Path): List<Path> {
-    return try {
-        Files.createDirectory(directory).toList()
-    } catch (e: Exception) {
-        emptyList()
-    }
 }

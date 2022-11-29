@@ -3,13 +3,11 @@ package com.example.offlinecontent.generateDirectorforsubtopic
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
-import com.example.offlinecontent.offlineContent.createDirectory
-import com.example.offlinecontent.offlineContent.videoEncryption
+import com.example.offlinecontent.offlineContent.Utilities.createDirectory
 import com.google.gson.Gson
 import java.io.File
 import java.io.InputStream
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.fileSize
 

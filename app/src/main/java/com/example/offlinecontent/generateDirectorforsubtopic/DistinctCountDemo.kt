@@ -2,7 +2,7 @@ package com.example.offlinecontent.generateDirectorforsubtopic
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.offlinecontent.offlineContent.createDirectory
+import com.example.offlinecontent.offlineContent.Utilities.createDirectory
 import java.io.File
 import java.nio.file.Paths
 
