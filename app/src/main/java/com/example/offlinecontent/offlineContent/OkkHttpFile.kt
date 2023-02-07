@@ -40,6 +40,7 @@ fun main(){
         subTenant = userDto?.subTenant ?: 0
     }
 
+    // Example of Hitting API
     getSelfLearnApiResponse(
         requestUrl = BASEURL+"selflearn/topicsAndVideos?examId=$examId&gradeId=$gradeId&subjectId=2&chapterId=229&userId=$userId",
         token = accessToken,

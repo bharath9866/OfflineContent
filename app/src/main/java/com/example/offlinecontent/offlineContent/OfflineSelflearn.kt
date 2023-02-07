@@ -26,11 +26,11 @@ fun main() {
     /**
      * INPUTS
      */
-    val usersList = arrayListOf("ADM040")
+    val usersList = arrayListOf("IA14")
     val drive = "D"
 
     /* CALLING FUNCTIONS */
-    getUAMToken("ADM040")?.apply {
+    getUAMToken("IA14", xTenant = "ia")?.apply {
         offLineSelfLearn(
             drive = "D",
             userId = userDto?.userId ?: 0,
@@ -43,16 +43,16 @@ fun main() {
         )
     }
 
-    usersList.forEachIndexed { index, user ->
-        getUAMToken(user)?.apply {
-//            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
-            getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
-            videoEncryption(
-                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
-                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
-            )
-        }
-    }
+//    usersList.forEachIndexed { index, user ->
+//        getUAMToken(user)?.apply {
+////            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+//            getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0, subTenantId = userDto?.subTenant?:0)
+//            videoEncryption(
+//                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+//                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
+//            )
+//        }
+//    }
 
 
     //    getImages("E", 3205748, 13, 7)
@@ -84,6 +84,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
         val userIdDir = "${drive}:\\${userId}"
         val gradeIdDir = "${drive}:\\${userId}\\${gradeId}"
         val examIdDir = "${drive}:\\${userId}\\${gradeId}\\${examId}"
+        val subTenantTextFile = "${drive}:\\${userId}\\${gradeId}\\${examId}\\${subTenantId}.txt"
 
         if(!File(userIdDir).exists()){
             createDirectory(Paths.get(userIdDir))
@@ -96,6 +97,11 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
         if(!File(examIdDir).exists()){
             createDirectory(Paths.get(examIdDir))
         }
+
+        if(!File(subTenantTextFile).exists()){
+            File(subTenantTextFile).createNewFile()
+        }
+
 
         //createDirectory(Paths.get("${drive}:\\${userId}\\${gradeId}\\${examId}\\${subjectIdList[s]}"))
 

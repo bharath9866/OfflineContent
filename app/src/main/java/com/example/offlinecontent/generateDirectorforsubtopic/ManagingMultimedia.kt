@@ -12,77 +12,19 @@ import java.nio.file.Paths
 import kotlin.io.path.fileSize
 
 
-
-@RequiresApi(Build.VERSION_CODES.O)
-fun main(){
-    getVideos("D", 3585449, 2, 1, usage = "download")
-
-    //getSubjectImages("D", 136683, 7, 1)
-    //images("D", 136683, 2, 2)
-    //images("D", 136683, 7, 1)
-
-//    getImages("D", 3585449, 2, 1)
-//    getVideos("D", 3585449, 2, 1)
-//    videoEncryption("G:\\3585449\\2\\1\\decryptedVideos", "G:\\3585449\\2\\1\\videos\\")
-
-    /*val list = arrayListOf("1654691407439.mp4", "1664792379321.mp4")
-
-    list.forEach {
-
-        val src = "Z:\\il-cms-assets-local\\media\\$it"
-
-        val decryptedVideosPath = "D:\\"
-        if(isFileExists(File(src))){
-            fileCopy(src,decryptedVideosPath + "\\$it")
-        } else {
-
-            println("not Exist: $it")
-
-        }
-    }*/
-
-    /*getVideos("D", 3034516, 7, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585440, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585441, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585442, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585443, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585444, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585445, 2, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585449, 2, 1, usage = "getSizeOfTheContent")
-    getVideos("D", 3585450, 2, 1, usage = "getSizeOfTheContent")
-    getVideos("D", 3585453, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585456, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585457, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585458, 2, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585461, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585462, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585463, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585464, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585465, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585466, 3, 3, usage = "getSizeOfTheContent")
-    getVideos("D", 3585472, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585475, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585476, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585477, 3, 2, usage = "getSizeOfTheContent")
-    getVideos("D", 3585479, 7, 3, usage = "getSizeOfTheContent")*/
-
-}
-
-
 /**
  * Parameter - usage have to constants
  * 1. download : which is used to download the content from s3 bucket
  * 2. getSizeOfTheContent: which is used to get the size of all videos without downloading content
  */
 @RequiresApi(Build.VERSION_CODES.O)
-fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = "download") {
+fun getVideos(drive:String, userId: Int, gradeId: Int, examId:Int, subTenantId:Int, usage:String = "download") {
 
     println("")
     println("")
     val listNos : ArrayList<String> = arrayListOf()
 
-    val examPath = "${dir}:\\${userId}\\${gradeId}\\${examId}"
+    val examPath = "${drive}:\\${userId}\\${gradeId}\\${examId}"
 
     val path = File(examPath)
 
@@ -92,30 +34,33 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
 
     var sizeOfTheContent = 0L
 
-    val decryptedVideosPath = "${dir}:\\${userId}\\${gradeId}\\${examId}\\decryptedVideos"
+    val decryptedVideosPath = "${drive}:\\${userId}\\${gradeId}\\${examId}\\decryptedVideos"
     if (!File(decryptedVideosPath).exists()) { createDirectory(Paths.get(decryptedVideosPath)) }
 
-    val encryptedPath = "${dir}:\\${userId}\\${gradeId}\\${examId}\\videos"
+    val encryptedPath = "${drive}:\\${userId}\\${gradeId}\\${examId}\\videos"
     if(!File(encryptedPath).exists()) { createDirectory(Paths.get(encryptedPath)) }
 
-    val nonMp4Videos = "${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4Videos"
+    val nonMp4Videos = "${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4Videos"
     if(!File(nonMp4Videos).exists()) { createDirectory(Paths.get(nonMp4Videos)) }
 
 
-    if(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").exists()){
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").delete()
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").createNewFile()
+    if(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").exists()){
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").delete()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").createNewFile()
     } else {
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").createNewFile()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").createNewFile()
     }
 
-    if(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").exists()){
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").delete()
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").createNewFile()
+    if(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").exists()){
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").delete()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").createNewFile()
     } else {
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").createNewFile()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").createNewFile()
     }
 
+    if(!File("${drive}:\\${userId}\\${gradeId}\\${examId}\\${subTenantId}.txt").exists()){
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\${subTenantId}.txt").createNewFile()
+    }
 
 
     if(subjects!=null) {
@@ -170,7 +115,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
 
                                                                         println("Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
 
-                                                                        duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
+//                                                                        duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
 
                                                                         listNos.add(srcOne)
 
@@ -202,7 +147,8 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
 
                                                                             print("S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
 
-                                                                            duplicateFile += fileCopy(srcTwo,decryptedVideosPath + "\\$ele")
+//                                                                            duplicateFile += fileCopy(srcTwo,decryptedVideosPath + "\\$ele")
+                                                                            duplicateFile += 1
 
                                                                             listNos.add(srcTwo)
 
@@ -224,7 +170,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
 
                                                             }
                                                         } else {
-                                                            File("${dir}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").appendText(ele + "\n")
+                                                            File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").appendText(ele + "\n")
                                                             println("Video NotExist:: S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}")
                                                         }
 
@@ -245,7 +191,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
         }
     }
 
-    print("dir: ${dir}, userId: ${userId}, gradeId: ${gradeId}, examdId: $examId -- ")
+    print("dir: ${drive}, userId: ${userId}, gradeId: ${gradeId}, examdId: $examId -- ")
 
     println("Total No.Of Videos in a List: " + listNos.distinct().count())
 
@@ -258,7 +204,7 @@ fun getVideos(dir:String, userId: Int, gradeId: Int, examId:Int, usage:String = 
     // Printing Non-MP4 Files in a Text File
     nonMp4VideoListFun.distinct().forEach { element ->
         if (!element.contains(".mp4", true)) {
-            File("${dir}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").appendText(element + "\n")
+            File("${drive}:\\${userId}\\${gradeId}\\${examId}\\nonMp4.txt").appendText(element + "\n")
         }
     }
 
@@ -391,7 +337,7 @@ fun getThumbnailImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
 
 // take ids from image.txt and store that id based images.jpg to another destination
 @RequiresApi(Build.VERSION_CODES.O)
-fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
+fun getImages(drive:String, userId: Int, gradeId: Int, examId:Int) {
 //    val dir = dir
 //    val userId = userId
 //    val gradeId = gradeId
@@ -401,20 +347,20 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
     // HAVE TO CHANGE DESTINATION PATH
 
     // D:\2226481\3\2\1\99\1071\2416
-    val path = "${dir}:\\${userId}\\${gradeId}\\${examId}"
+    val path = "${drive}:\\${userId}\\${gradeId}\\${examId}"
 
-    if(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").exists()){
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").delete()
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").createNewFile()
+    if(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").exists()){
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").delete()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").createNewFile()
     } else {
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").createNewFile()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").createNewFile()
     }
 
-    if (File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").exists()) {
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").delete()
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").createNewFile()
+    if (File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").exists()) {
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").delete()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").createNewFile()
     } else {
-        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").createNewFile()
+        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").createNewFile()
     }
 
     val subjects = File(path).listFiles()
@@ -425,7 +371,7 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
         for (subject in subjects) {
             // TODO: Get Subject Images
             if(subject.name == "getUserSubjectsPerExam.json"){
-                val imageNumList = getSubjectImages(dir, userId, gradeId, examId)
+                val imageNumList = getSubjectImages(drive, userId, gradeId, examId)
                 val temp = arrayListOf<String>()
 
                 imageNumList?.forEach {
@@ -435,10 +381,10 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
                 temp.forEach {
 
                     val src = "Z:\\il-cms-assets-local\\media\\$it"
-                    val dest = "${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\"
+                    val dest = "${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\"
 
-                    if (!File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images").exists()) {
-                        createDirectory(Paths.get("${dir}:\\${userId}\\${gradeId}\\${examId}\\images"))
+                    if (!File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images").exists()) {
+                        createDirectory(Paths.get("${drive}:\\${userId}\\${gradeId}\\${examId}\\images"))
                     }
 
 
@@ -446,13 +392,13 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
                     if (isFileExists(File(src))) {
 
                         if (fileCopy(src, dest + it) == 1) {
-                            totalImages.add(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
+                            totalImages.add(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
                         }
 
                     } else {
 
 
-                        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").appendText(it + "\n")
+                        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").appendText(it + "\n")
 
                         print("Image NotExist:: ${File(src).name}")
 
@@ -487,10 +433,10 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
                                                 temp.forEach {
 
                                                     val src = "Z:\\il-cms-assets-local\\media\\$it"
-                                                    val dest = "${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\"
+                                                    val dest = "${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\"
 
-                                                    if (!File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images").exists()) {
-                                                        createDirectory(Paths.get("${dir}:\\${userId}\\${gradeId}\\${examId}\\images"))
+                                                    if (!File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images").exists()) {
+                                                        createDirectory(Paths.get("${drive}:\\${userId}\\${gradeId}\\${examId}\\images"))
                                                     }
 
 
@@ -503,7 +449,7 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
 
                                                             if (fileCopy(src, dest + it) == 1) {
 
-                                                                totalImages.add(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
+                                                                totalImages.add(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
 
                                                             }
 
@@ -511,17 +457,17 @@ fun getImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
 
                                                             if (fileCopy(src, dest + it) == 1) {
 
-                                                                totalImages.add(File("${dir}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
+                                                                totalImages.add(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
 
                                                             }
 
-                                                            File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").appendText(File(src).name +  "\n")
+                                                            File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").appendText(File(src).name +  "\n")
 
                                                         }
 
                                                     } else {
 
-                                                        File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").appendText(
+                                                        File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").appendText(
                                                             it + "\n"
                                                         )
                                                         print("Image NotExist:: S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ")
