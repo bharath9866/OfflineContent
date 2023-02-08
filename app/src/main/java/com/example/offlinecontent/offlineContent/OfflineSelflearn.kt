@@ -2,6 +2,7 @@ package com.example.offlinecontent.offlineContent
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.offlinecontent.generateDirectorforsubtopic.getImages
 import com.example.offlinecontent.generateDirectorforsubtopic.getVideos
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getUserSubjectsPerExam.GetUserSubjectsPerExam
 import com.example.offlinecontent.generateDirectorforsubtopic.modal.getuserchaptersforexamandsubject.GetUserChaptersForExamAndSubject
@@ -23,36 +24,41 @@ import java.nio.file.Paths
 @RequiresApi(Build.VERSION_CODES.O)
 fun main() {
 
+//    , "IA20", "IA19"
     /**
      * INPUTS
      */
     val usersList = arrayListOf("IA14")
     val drive = "D"
+    
 
-    /* CALLING FUNCTIONS */
-    getUAMToken("IA14", xTenant = "ia")?.apply {
-        offLineSelfLearn(
-            drive = "D",
-            userId = userDto?.userId ?: 0,
-            gradeId = userDto?.grade?.gradeId ?: 0,
-            examId = userDto?.exams?.get(0)?.examId ?: 0,
-            token = accessToken ?: "",
-            tenantName = tenantName,
-            tenantId = userDto?.tenantId ?: 0,
-            subTenantId = userDto?.subTenant ?: 0
-        )
+    usersList.forEachIndexed { index, user ->
+        getUAMToken(user, xTenant = "ia")?.apply {
+            offLineSelfLearn(
+                drive = "D",
+                userId = userDto?.userId ?: 0,
+                gradeId = userDto?.grade?.gradeId ?: 0,
+                examId = userDto?.exams?.get(0)?.examId ?: 0,
+                token = accessToken ?: "",
+                tenantName = tenantName,
+                tenantId = userDto?.tenantId ?: 0,
+                subTenantId = userDto?.subTenant ?: 0
+            )
+            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
+            getVideos(
+                drive = drive,
+                userId = userDto?.userId?:0,
+                gradeId = userDto?.grade?.gradeId?:0,
+                examId = userDto?.exams?.get(0)?.examId?:0,
+                subTenantId = userDto?.subTenant?:0,
+                usage = "download"
+            )
+            videoEncryption(
+                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
+                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos\\"
+            )
+        }
     }
-
-//    usersList.forEachIndexed { index, user ->
-//        getUAMToken(user)?.apply {
-////            getImages(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0)
-//            getVideos(drive, userDto?.userId?:0, userDto?.grade?.gradeId?:0, examId = userDto?.exams?.get(0)?.examId?:0, subTenantId = userDto?.subTenant?:0)
-//            videoEncryption(
-//                sourcePath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\decryptedVideos",
-//                destinationPath = "$drive:\\${userDto?.userId?:0}\\${userDto?.grade?.gradeId?:0}\\${userDto?.exams?.get(0)?.examId?:0}\\videos"
-//            )
-//        }
-//    }
 
 
     //    getImages("E", 3205748, 13, 7)
@@ -123,6 +129,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
         if(subjectModalData.subjectNode.isNotEmpty()) {
 
                 subjectIdList.clear()
+            
                 for(s in 0 until subjectModalData.subjectNode.size){
                     subjectIdList.add(subjectModalData.subjectNode[s].nodeId!!)
 
@@ -148,7 +155,9 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                             if(chapterModalData.chapterNodes.isNotEmpty()){
 
                                 chapterIdList.clear()
-                                for(c in 0 until chapterModalData.chapterNodes.size){ // Chapter List
+                                
+                                for(c in 0 until chapterModalData.chapterNodes.size) { // Chapter
+                                    // List
 
                                     chapterModalData.chapterNodes[c].nodeId?.let { chapterIdList.add(it) }
 
@@ -172,11 +181,10 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                     if(getTopicVideos_url.contains("false : ", true)){
                                         print(", TopicAndVideo Json Throws $getTopicVideos_url")
                                     } else {
-                                        if(getTopicVideos_url.isEmpty()){
+                                        if(getTopicVideos_url.isEmpty()) {
                                             print(", TopicAndVidoeFileIsFull: False")
                                         } else {
-
-
+                                            
                                             val topicAndVideosJSONResponse = "${drive}:\\${userId}\\${gradeId}\\${examId}\\${subjectIdList[s]}\\${chapterIdList[c]}\\topicsAndVideos.json"
 
                                             if(!File(topicAndVideosJSONResponse).exists()){
@@ -187,7 +195,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                                 out.write(getSelfLearnApiResponse(getTopicVideos_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId))
                                             }
 
-                                            print(", TopicAndVideoJsonFile: True")
+                                            println(", TopicAndVideoJsonFile: True")
 
                                             // ---------------------------------------------- Creating VideoNumsList[videoURL.txt] -----------------------------------------------
                                             val videosNumsListTxtFile = "${drive}:\\${userId}\\${gradeId}\\${examId}\\${subjectIdList[s]}\\${chapterIdList[c]}\\videoURL.txt"
@@ -241,7 +249,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                     }
 
                                     // ---------------------------------------------- Creating Topic and Subtopic Directory -----------------------------------------------
-                                    val topicSubtopicModalData = Gson().fromJson(getTopicSubtopic_url, TopicsAndSubtopics::class.java).data
+                                    /*val topicSubtopicModalData = Gson().fromJson(getTopicSubtopic_url, TopicsAndSubtopics::class.java).data
                                     val topicSubtopicMap = topicSubtopicModalData?.let { topicSubtopicMap(it, subjectIdList[s], chapterIdList[c]) }
                                     if (topicSubtopicMap != null) {
 
@@ -265,7 +273,6 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                                     if (!File(subtopicDir).exists()) {
                                                         createDirectory(Paths.get(subtopicDir))
 
-
                                                         val getFlashCard_url = getSelfLearnApiResponse(BASEURL + "selflearn/getuserflashcardsAndQuestions?examId=${examId}&gradeId=${gradeId}&subjectId=${subjectIdList[s]}&chapterId=${chapterIdList[c]}&topicId=${topicIdAsKey}&subtopicId=${subtopicValue[subTopicIdAsValue]}&userId=${userId}", token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
                                                         // Printing Id's for Cross Check
@@ -273,10 +280,10 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
 
                                                         if (getFlashCard_url.contains("false : ", true)) {
                                                             print(", FlashCardJson Throws $getFlashCard_url")
-                                                            /*File(flashCardJSONPath).bufferedWriter()
+                                                            *//*File(flashCardJSONPath).bufferedWriter()
                                                                 .use { out ->
                                                                     out.write("")
-                                                                }*/
+                                                                }*//*
                                                         } else {
 
                                                             // Check FlashCard Response is Empty or not
@@ -355,7 +362,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
                                             }
 
                                         }
-                                    }
+                                    }*/
 
                                 }
                             }

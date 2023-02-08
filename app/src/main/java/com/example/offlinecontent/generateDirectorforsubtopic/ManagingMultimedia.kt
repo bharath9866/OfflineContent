@@ -103,29 +103,23 @@ fun getVideos(drive:String, userId: Int, gradeId: Int, examId:Int, subTenantId:I
                                                         val srcTwo = "Z:\\il-cms-assets-local\\media\\$ele"
 
                                                         if(isFileExists(File(srcOne))){
-                                                            val srcOneSize = Paths.get(srcOne).fileSize()
 
                                                             if(usage.contains("download")) {
 
                                                                 try {
-
                                                                     if (isFileExists(File(encryptedPath + "\\$ele"))) {
                                                                         println("$ele file is already Encrypted From Compressed File Block")
                                                                     } else {
-
                                                                         println("Compressed Folder, S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
-
-//                                                                        duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
-
+                                                                        duplicateFile += fileCopy(srcOne, decryptedVideosPath + "\\$ele")
                                                                         listNos.add(srcOne)
-
                                                                     }
                                                                 } catch (e: Exception) {
                                                                     println(e)
                                                                 }
 
                                                             } else if(usage.contains("getSizeOfTheContent")){
-
+                                                                
                                                                 listNos.add(srcOne)
 
                                                             }
@@ -135,7 +129,7 @@ fun getVideos(drive:String, userId: Int, gradeId: Int, examId:Int, subTenantId:I
                                                         else  if (isFileExists(File(srcTwo))) {
 
                                                             if (usage.contains("download")) {
-
+                                                                
                                                                 try {
                                                                     if(isFileExists(File(encryptedPath+"\\$ele"))) {
 
@@ -147,14 +141,14 @@ fun getVideos(drive:String, userId: Int, gradeId: Int, examId:Int, subTenantId:I
 
                                                                             print("S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(srcTwo).name}, ")
 
-//                                                                            duplicateFile += fileCopy(srcTwo,decryptedVideosPath + "\\$ele")
-                                                                            duplicateFile += 1
+                                                                            duplicateFile += fileCopy(srcTwo,decryptedVideosPath + "\\$ele")
 
                                                                             listNos.add(srcTwo)
 
                                                                         } else {
 
-                                                                            duplicateFile += fileCopy(srcTwo,nonMp4Videos + "\\$ele")
+                                                                            listNos.add(srcTwo)
+                                                                            duplicateFile += fileCopy(srcTwo, nonMp4Videos + "\\$ele")
 
                                                                         }
 
@@ -167,7 +161,6 @@ fun getVideos(drive:String, userId: Int, gradeId: Int, examId:Int, subTenantId:I
                                                             else if (usage.contains("getSizeOfTheContent")) {
 
                                                                 listNos.add(srcTwo)
-
                                                             }
                                                         } else {
                                                             File("${drive}:\\${userId}\\${gradeId}\\${examId}\\videoNotExist.txt").appendText(ele + "\n")
@@ -258,38 +251,25 @@ fun getThumbnailImages(dir:String, userId: Int, gradeId: Int, examId:Int) {
 
                                                 // checking for non-mp4 videos
                                                 for (ele in temp) {
-
-
                                                     val src = "Z:\\il-cms-assets-local\\media\\$ele" // it's like s3 Database
-
                                                     val decryptedVideosPath = "${dir}:\\${userId}\\${gradeId}\\${examId}\\thumbnails"
                                                     if (!File(decryptedVideosPath).exists()) {
                                                         createDirectory(Paths.get(decryptedVideosPath))
                                                     }
-
-
-
+                                                    
                                                     if (isFileExists(File(src))) {
-
                                                         print("S: ${subject.name}, C: ${chapter.name}, T: ${topic.name}, ${File(src).name}, ")
-
                                                         try {
-
                                                             if(File(src).extension.contains("mp4")) {
-
                                                                 duplicateFile += fileCopy(src,decryptedVideosPath + "\\$ele")
-
                                                             } else {
                                                                 File("${dir}:\\${userId}\\${gradeId}\\${examId}\\imageNotSupported.txt").appendText(File(src).name+  "\n")
                                                             }
-
                                                             listNos.add(ele)
-
                                                         } catch (e: Exception) {
                                                             duplicateFile += fileCopy(src, decryptedVideosPath + "\\$ele")
                                                             listNos.add(ele)
                                                         }
-
 
                                                         // Printing Non-MP4 Videos
                                                     } else {
@@ -386,22 +366,14 @@ fun getImages(drive:String, userId: Int, gradeId: Int, examId:Int) {
                     if (!File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images").exists()) {
                         createDirectory(Paths.get("${drive}:\\${userId}\\${gradeId}\\${examId}\\images"))
                     }
-
-
-
+                    
                     if (isFileExists(File(src))) {
-
                         if (fileCopy(src, dest + it) == 1) {
                             totalImages.add(File("${drive}:\\${userId}\\${gradeId}\\${examId}\\images\\$it").name)
                         }
-
                     } else {
-
-
                         File("${drive}:\\${userId}\\${gradeId}\\${examId}\\imageNotExist.txt").appendText(it + "\n")
-
                         print("Image NotExist:: ${File(src).name}")
-
                     }
 
                 }
