@@ -80,7 +80,7 @@ fun offLineSelfLearn(drive:String, userId: Int, gradeId: Int, examId:Int, token:
 
     val subjectIdList : ArrayList<Int> = arrayListOf()
 
-    val getSubjects_url  = BASEURL+"selflearn/getUserSubjectsPerExam?examId=${examId}&gradeId=${gradeId}&userId=${userId}"
+    val getSubjects_url  = BASEURL+"selflearn/v2/getUserSubjectsPerExam?examId=${examId}&gradeId=${gradeId}&userId=${userId}"
 
     val varGetSubjectResponse = getSelfLearnApiResponse(requestUrl = getSubjects_url, token = token, tenantName = tenantName, tenantId = tenantId, subTenant = subTenantId)
 
